@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Tag 调研 · 索引</title>
+<style>
+  :root{
+    --bg:#faf9f6; --card:#ffffff; --ink:#1f1e1c; --ink2:#5f5e5a; --ink3:#8a8983;
+    --line:#e7e4dc; --blue:#185fa5; --blue-bg:#e6f1fb; --purple:#534ab7; --purple-bg:#eeedfe;
+    --teal:#0f6e56; --teal-bg:#e1f5ee;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:72px 28px 90px}
+  .kicker{font-size:13px;color:var(--blue);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  h1{font-size:34px;font-weight:700;line-height:1.25;letter-spacing:-.01em}
+  .sub{margin-top:16px;color:var(--ink2);font-size:16px;max-width:620px}
+  .meta{margin-top:20px;font-size:13px;color:var(--ink3)}
+  .cards{margin-top:44px;display:grid;gap:20px}
+  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 30px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+  a.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 11px;border-radius:20px;margin-bottom:12px}
+  .t-purple{background:var(--purple-bg);color:var(--purple)}
+  .t-teal{background:var(--teal-bg);color:var(--teal)}
+  a.card h2{font-size:21px;font-weight:700;margin-bottom:8px}
+  a.card p{font-size:14.5px;color:var(--ink2)}
+  .go{margin-top:14px;font-size:14px;color:var(--blue);font-weight:600}
+  .foot{margin-top:50px;font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">Product Research · Claude Tag</div>
+  <h1>Claude Tag 调研合集</h1>
+  <p class="sub">围绕 Anthropic「Claude Tag」（住进 Slack 的共享 AI 同事）的两份调研：一份聚焦产品本身的机制拆解与元宝派借鉴，一份是国内协作平台的对标机会分析。</p>
+  <div class="meta">更新于 2026-07-01 · 资料来源：官方产品页/文档 + 官方演示视频 + 第三方实测 + 中外媒体报道</div>
+
+  <div class="cards">
+    <a class="card" href="product-research.html">
+      <span class="tag t-purple">产品调研 · 机制拆解</span>
+      <h2>Claude Tag 产品调研</h2>
+      <p>产品定位、核心功能与五步运转逻辑、对工作流的改变；两大亮点能力（主动回复 + 团队共建知识库）；以及对元宝派「多人 + 多 Bot IM 场域」的可借鉴意义。</p>
+      <div class="go">阅读全文 →</div>
+    </a>
+    <a class="card" href="benchmark.html">
+      <span class="tag t-teal">竞品对标 · 机会分析</span>
+      <h2>Agent 协作平台对标分析（Claude Tag + 飞书）</h2>
+      <p>以 Claude Tag 为标杆，对标飞书 Aily + 扣子、豆包 + 飞书；能力矩阵、隔离机制、主动性实现、产品机会清单与三方机会评分。</p>
+      <div class="go">阅读全文 →</div>
+    </a>
+  </div>
+
+  <div class="foot">本站为产品研究材料，含主观判断，仅供决策参考。凡标注「第三方实测」的能力来自博主演示，可信度高于营销页但非官方口径。</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Tag 产品调研</title>
+<style>
+  :root{
+    --bg:#faf9f6; --card:#ffffff; --ink:#1f1e1c; --ink2:#5f5e5a; --ink3:#8a8983;
+    --line:#e7e4dc; --line2:#d8d4c9;
+    --blue:#185fa5; --blue-bg:#e6f1fb;
+    --purple:#534ab7; --purple-bg:#eeedfe;
+    --teal:#0f6e56; --teal-bg:#e1f5ee;
+    --coral:#993c1d; --coral-bg:#faece7;
+    --amber:#854f0b; --amber-bg:#faeeda;
+    --red:#a32d2d; --red-bg:#fcebeb;
+    --green:#3b6d11; --green-bg:#eaf3de;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 28px 90px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:26px;margin-bottom:40px}
+  .kicker{font-size:13px;color:var(--blue);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  h1{font-size:33px;font-weight:700;line-height:1.25;letter-spacing:-.01em}
+  .sub{margin-top:14px;color:var(--ink2);font-size:15.5px;max-width:760px}
+  .meta{margin-top:20px;font-size:13px;color:var(--ink3);display:flex;gap:18px;flex-wrap:wrap}
+  .meta span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+  h2{font-size:23px;font-weight:700;margin:54px 0 18px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:12px}
+  h2 .n{font-size:14px;color:var(--blue);font-weight:600;border:1.5px solid var(--blue);border-radius:50%;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+  h3{font-size:17.5px;font-weight:600;margin:30px 0 12px}
+  h4{font-size:15px;font-weight:600;margin:0 0 6px}
+  p{margin:12px 0;color:#34322e}
+  .lead{font-size:16px;color:var(--ink2)}
+  strong{font-weight:600;color:var(--ink)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin:20px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}.wrap{padding:36px 18px 70px}h1{font-size:26px}}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+  .t-blue{background:var(--blue-bg);color:var(--blue)}
+  .t-purple{background:var(--purple-bg);color:var(--purple)}
+  .t-teal{background:var(--teal-bg);color:var(--teal)}
+  .t-coral{background:var(--coral-bg);color:var(--coral)}
+  .t-amber{background:var(--amber-bg);color:var(--amber)}
+  .t-red{background:var(--red-bg);color:var(--red)}
+  .t-green{background:var(--green-bg);color:var(--green)}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f3f1ea;font-weight:600;font-size:13px;color:var(--ink2)}
+  tr:last-child td{border-bottom:none}
+  td.feat{font-weight:600;color:var(--ink);width:150px}
+  ul,ol{margin:12px 0 12px 4px;padding-left:22px}
+  li{margin:7px 0;color:#34322e}
+  .callout{border-left:3px solid var(--blue);background:var(--blue-bg);padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0}
+  .callout.coral{border-color:var(--coral);background:var(--coral-bg)}
+  .callout.teal{border-color:var(--teal);background:var(--teal-bg)}
+  .callout.amber{border-color:var(--amber);background:var(--amber-bg)}
+  .callout .lbl{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+  .callout.blue .lbl{color:var(--blue)} .callout.coral .lbl{color:var(--coral)} .callout.teal .lbl{color:var(--teal)} .callout.amber .lbl{color:var(--amber)}
+  .step{display:flex;gap:16px;margin:14px 0;align-items:flex-start}
+  .step .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--purple-bg);color:var(--purple);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .step .body{flex:1}
+  .opp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:16px 0;position:relative;overflow:hidden}
+  .opp::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+  .opp.p0::before{background:var(--red)} .opp.p1::before{background:var(--amber)} .opp.p2::before{background:var(--teal)}
+  .opp h4{display:flex;align-items:center;gap:10px}
+  .prio{font-size:11px;font-weight:700;padding:2px 9px;border-radius:5px;letter-spacing:.03em}
+  .prio.p0{background:var(--red-bg);color:var(--red)} .prio.p1{background:var(--amber-bg);color:var(--amber)} .prio.p2{background:var(--teal-bg);color:var(--teal)}
+  .footnote{font-size:12.5px;color:var(--ink3);margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
+  .tldr{background:var(--ink);color:#f5f3ee;border-radius:16px;padding:28px 30px;margin:8px 0 10px}
+  .tldr h2{color:#fff;margin:0 0 14px;font-size:19px}
+  .tldr h2 .n{color:#fff;border-color:#fff}
+  .tldr p,.tldr li{color:#d9d6cf}
+  .tldr strong{color:#fff}
+  .badge{font-size:11px;color:var(--ink3);font-weight:400;border:1px solid var(--line2);border-radius:5px;padding:1px 6px;margin-left:6px}
+  .draft{border:1.5px dashed var(--amber);background:var(--amber-bg)}
+  .draft .lbl{color:var(--amber);font-size:12px;font-weight:700;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">产品调研 · Product Research</div>
+  <h1>Claude Tag 产品调研<br>——住进 Slack 的共享 AI 同事</h1>
+  <p class="sub">Anthropic 把 Claude 从"你打开的对话框"变成"住在团队频道里的一名同事"。本报告拆解它的产品定位、功能运转逻辑、对工作流的改变，以及两个最值得深挖的亮点能力，并落到对元宝派的借鉴。</p>
+  <div class="meta">
+    <span><i class="dot"></i>2026-07-01</span>
+    <span>状态：Public Beta（Enterprise / Team，仅 Slack）</span>
+    <span>底层模型：Opus 4.8</span>
+  </div>
+</header>
+
+<div class="tldr">
+  <h2><span class="n">!</span>一页速览</h2>
+  <ul style="margin-left:2px">
+    <li><strong>是什么</strong>：`@Claude` 进 Slack 频道派活，它拆解任务、调用被授权的工具、在 thread 回帖——一个<strong>全频道共享、持续记忆、能主动补位、可异步跨天推进</strong>的 AI 同事。</li>
+    <li><strong>定位</strong>：从"最强对话模型"升级为"<strong>团队 AI 协作基础设施</strong>"；Karpathy 称之为"LLM UIUX 的第三次重大重设计"。</li>
+    <li><strong>两个亮点</strong>：① <strong>主动回复</strong>——routine 驱动的"唤醒式主动"，人圈边界、模型判断该不该发声；② <strong>团队共建知识库</strong>——管理员打底 + 全员日常自动进化的"第二大脑"。</li>
+    <li><strong>对工作流的根本改变</strong>：AI 从"个人的私有助手"变成"团队的公共成员"，把"重复交代背景 / 跨人跨部门传话"的协调成本压到最低。</li>
+  </ul>
+</div>
+
+<h2><span class="n">1</span>产品场景、优势与核心定位</h2>
+
+<h3>1.1 核心定位：从"对话模型"到"团队协作基础设施"</h3>
+<p class="lead">Claude Tag 的定位不是"更好用的聊天机器人"，而是把 AI 重新安放进团队的位置——<strong>一个有工作账号、有持续记忆、被全频道共享、能主动干活的数字同事</strong>。它取代旧的「Claude in Slack」（旧版仅一对一、只看最近 20 条消息），2026-08-03 退役。</p>
+<div class="callout blue">
+  <div class="lbl">Karpathy 的判断</div>
+  「LLM UIUX 的第三次重大重新设计」——第一次是网站（你去访问），第二次是本地应用（下载到电脑），<strong>第三次是独立、持久、异步、拥有组织级工具和上下文、并能与团队协作的实体</strong>。Claude Tag 就是这第三形态的落地。
+</div>
+
+<h3>1.2 典型产品场景</h3>
+<div class="grid2">
+  <div class="card">
+    <span class="tag t-blue">工程 / 研发</span>
+    <ul>
+      <li><strong>事故一线响应</strong>：读故障报告、看失败截图，用 Datadog/Linear/GitHub 定位根因，常常直接<strong>起草修复 PR</strong>（CTO 原声称其为 "first responder"）</li>
+      <li><strong>自主开发闭环</strong>：讨论一个功能 → 定位代码库 → 写码 → 开 PR 并落地（官方视频演示）</li>
+      <li>Anthropic 内部：<strong>65% 产品 PR 合并</strong>由内部版开启</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag t-teal">数据 / 运营 / GTM</span>
+    <ul>
+      <li><strong>Catch up</strong>：几秒钟从一条又长又乱的 thread 里提炼"决定了什么、还差什么、等谁拍板"</li>
+      <li><strong>Pull numbers</strong>：跑数、出报表</li>
+      <li><strong>销售线索研究</strong>：新预约进来自动抓客户 LinkedIn/官网，生成含"异议应对"的会议简报<span class="badge">第三方实测</span></li>
+      <li><strong>会议筹备</strong>：把"总掉链子的跟进"变成"自己运转的项目"</li>
+    </ul>
+  </div>
+</div>
+
+<h3>1.3 四个核心优势</h3>
+<div class="grid2">
+  <div class="card">
+    <h4>① 共享（Shared）</h4>
+    <p style="font-size:14px;color:var(--ink2)">同一频道只有一个 Claude，全员同一身份。每个人都看得到它在做什么，能接力上一个人的对话——像共事，不是私聊。也顺带把非技术员工的使用门槛降到最低。</p>
+  </div>
+  <div class="card">
+    <h4>② 持续记忆（Persistent）</h4>
+    <p style="font-size:14px;color:var(--ink2)">长期参与频道会积累隐性上下文，不用每次从零解释背景；获授权后可跨频道、跨数据源学习。对比旧版只看最近 20 条。</p>
+  </div>
+  <div class="card">
+    <h4>③ 主动（Proactive / Ambient）</h4>
+    <p style="font-size:14px;color:var(--ink2)">设一次常驻规则，它就能不被 @ 也主动跟进、补位、提醒——但主动被规则圈定，可控可关（详见第 3 节）。</p>
+  </div>
+  <div class="card">
+    <h4>④ 异步（Async）</h4>
+    <p style="font-size:14px;color:var(--ink2)">派完活你去忙别的；它能给自己排后续任务，跨小时甚至跨天持续推进项目。Anthropic 内部"并行委派多个 Claude"已多于亲自执行。</p>
+  </div>
+</div>
+
+<h2><span class="n">2</span>核心功能点、运转逻辑与对工作流的影响</h2>
+
+<h3>2.1 一次任务的运转逻辑（五步循环）</h3>
+<p>无论是被人 @ 还是被 routine 唤醒，都走同一个循环。关键是<strong>「线程持久、沙箱按需构建/释放」</strong>——它不是常驻进程实时盯着你，而是被唤醒 → 起临时沙箱干活 → 跑完即休眠。</p>
+<div class="card">
+  <div class="step"><div class="num">1</div><div class="body"><h4>会话开始</h4><p style="margin:0;font-size:14px;color:var(--ink2)">有人 @Claude，或一条 routine 到点/被事件触发。人触发与调度触发等价。</p></div></div>
+  <div class="step"><div class="num">2</div><div class="body"><h4>构建临时沙箱</h4><p style="margin:0;font-size:14px;color:var(--ink2)">Anthropic 托管的隔离环境，一个 thread 一个；读文件、写文档、跑代码都在里面。<strong>凭证不进沙箱。</strong></p></div></div>
+  <div class="step"><div class="num">3</div><div class="body"><h4>过 Agent Proxy 调用工具</h4><p style="margin:0;font-size:14px;color:var(--ink2)">需要外部系统时，请求过边界代理，按该频道 scope 的规则注入凭证或拦截（默认 deny）。</p></div></div>
+  <div class="step"><div class="num">4</div><div class="body"><h4>以服务账号身份行动</h4><p style="margin:0;font-size:14px;color:var(--ink2)">在 GitHub/数仓等以它自己的服务账号行事，动作进各系统审计日志。</p></div></div>
+  <div class="step"><div class="num">5</div><div class="body"><h4>回帖 + 沙箱释放</h4><p style="margin:0;font-size:14px;color:var(--ink2)">在 thread 贴执行清单与结果（全频道可见）；空闲后沙箱释放，下条消息再重建。</p></div></div>
+</div>
+
+<h3>2.2 核心功能清单</h3>
+<table>
+  <thead><tr><th style="width:150px">功能</th><th>做什么</th></tr></thead>
+  <tbody>
+    <tr><td class="feat">@ 派活</td><td>频道/thread/私信里自然语言派活，拆阶段执行，thread 内贴实时执行清单</td></tr>
+    <tr><td class="feat">接外部工具</td><td>代码库、工单、数仓、任意有 API 的工具，经 connections/plugins/skills 接入（自定义技能目前经 GitHub 仓库挂载）<span class="badge">部分第三方实测</span></td></tr>
+    <tr><td class="feat">身份与权限</td><td>频道内以服务账号身份行动；权限"跟频道走不跟人走"，管理员按 scope 配 Access bundle</td></tr>
+    <tr><td class="feat">持续记忆</td><td>按 scope 分库；公开频道写 workspace 共享库，私有频道只写自己独立库；无组织级记忆</td></tr>
+    <tr><td class="feat">主动 routine</td><td>定时任务 / 频道监听 / 订阅 PR（及业务事件），自然语言设定，全频道可见可关</td></tr>
+    <tr><td class="feat">私信 DM</td><td>用你个人账号的连接器，走个人席位额度，结果归属到你（与频道模式相反）</td></tr>
+    <tr><td class="feat">治理</td><td>组织/频道级 token 花费上限 + 全量操作审计 + 任务发起人可查</td></tr>
+  </tbody>
+</table>
+
+<h3>2.3 对现有工作流的三个根本改变</h3>
+<div class="grid3">
+  <div class="card">
+    <span class="tag t-purple">改变一</span>
+    <h4>AI 从"私有"变"公共"</h4>
+    <p style="font-size:14px;color:var(--ink2)">过去每人各自和 AI 私聊、结果割裂；现在一个频道一个共享 AI，工作在公开视野下进行、可接力。协调成本大降。</p>
+  </div>
+  <div class="card">
+    <span class="tag t-purple">改变二</span>
+    <h4>背景不用反复交代</h4>
+    <p style="font-size:14px;color:var(--ink2)">持续记忆让它"记得公司/项目的来龙去脉"，减少了"重复解释背景 + 无穷的对齐会"。</p>
+  </div>
+  <div class="card">
+    <span class="tag t-purple">改变三</span>
+    <h4>跨部门自动接续</h4>
+    <p style="font-size:14px;color:var(--ink2)">工程动作的下游影响（如影响发布计划）能被它主动接过去、跨频道协助——传话链条被压缩。</p>
+  </div>
+</div>
+<div class="callout coral">
+  <div class="lbl">对工作流影响的一句话</div>
+  它把团队里那些<strong>"没人负责、总掉链子的接缝"</strong>——重复交代背景、跨人传话、被遗忘的 thread、下游影响没人跟——交给了一个记得住、看得全、能主动补位的公共成员。这才是"AI 同事"相对"AI 工具"的真正增量。
+</div>
+
+<h2><span class="n">3</span>亮点能力 Highlight</h2>
+
+<h3>3.1 亮点一：主动回复（Proactive / Ambient）</h3>
+<p class="lead">最被神化、也最值得看透的能力。本质是<strong>"人圈边界 + 模型判断"</strong>：用户用自然语言预立 routine → 触发源唤醒 → 模型在规则边界内判断"这条是否相关、值得发"，<strong>没有就跳过（该闭嘴就闭嘴）</strong>。</p>
+<div class="card">
+  <table style="margin:0;border:none">
+    <thead><tr><th style="width:170px">触发源</th><th style="width:130px">性质</th><th>例子</th></tr></thead>
+    <tbody>
+      <tr><td class="feat" style="width:170px">定时任务</td><td>回看式</td><td>"每天 9 点发过去 24 小时全公司业务摘要"</td></tr>
+      <tr><td class="feat" style="width:170px">频道监听</td><td>回看式</td><td>"盯这些频道，每天一次，有相关的才发，没有就跳过"</td></tr>
+      <tr><td class="feat" style="width:170px">订阅 PR / 业务事件</td><td>事件触发（近实时）</td><td>CI 完成/评审落地即报；销售频道新预约 → 自动研究客户 <span class="badge">第三方实测</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout amber">
+  <div class="lbl">一处需诚实标注的边界</div>
+  产品页宣称 "reacts in real time / reads the room / doesn't wait to be asked"，第三方实测也演示了"无唤醒词自动插话"；但官方技术文档落到实处只有<strong>定时/监听/事件</strong>三类 routine 的唤醒式机制。<strong>"频道新消息实时触发插话"官方未明确承诺</strong>——作对外表述时应区分"实测演示"与"官方保证"。<br>
+  <strong>产品价值提炼</strong>：它的高明不在"能主动"，而在"<strong>可控的主动</strong>"——需显式开启、管理员控频率、全频道可见可关，用制度约束把"AI 话痨"的风险摁住了。
+</div>
+
+<h3>3.2 亮点二：团队共建知识库（第二大脑）</h3>
+<p class="lead">这是把"持续记忆"做成产品的关键。采用<strong>"管理员集中打底 + 全员日常自动进化"双轨制</strong>，让知识库从个人壁垒变成全员共享的企业上下文。<span class="badge">主要据第三方实测，实现细节以官方为准</span></p>
+<div class="grid2">
+  <div class="card">
+    <span class="tag t-amber">① 初始打底（手动灌）</span>
+    <ul>
+      <li><strong>ZIP 导入</strong>：本地知识库（如 Obsidian）打包成 ZIP，Slack 里发给 Claude 重构为记忆层</li>
+      <li><strong>GitHub 挂载</strong>：知识库放仓库、后台授权挂载，利于跨平台版本控制</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag t-teal">② 持续进化（自动 + 指令）</span>
+    <ul>
+      <li><strong>内置记忆层</strong>：自主记忆频道里的重要工作流/讨论，越用越懂</li>
+      <li><strong>对话级指令</strong>："以后都用这个口吻写文案"→ 当场生成永久记忆</li>
+      <li><strong>定时梳理</strong>：定期把近期讨论提炼进记忆层，保持最新</li>
+    </ul>
+  </div>
+</div>
+<div class="callout teal">
+  <div class="lbl">两个产品洞察</div>
+  ① <strong>记忆载体是结构化文本文件（.md），按 scope 分库</strong>——"越用越懂"不是玄学，难点不在存储，而在"写什么、何时更新、按 scope 隔离读写"。<br>
+  ② 真正的价值是<strong>把"全公司第二大脑"部署给共享 Agent 后，非技术员工不做任何配置，也能拿到贴合公司实情的高质量输出</strong>——这才是"降低 AI 门槛"的真抓手。
+</div>
+
+<h2><span class="n">4</span>对元宝派的可借鉴意义</h2>
+<p class="lead">元宝派现状：<strong>多人 + 多 Bot（默认一个元宝）通过 IM 形态交互的场域</strong>。这个定位决定了借鉴的方向——元宝派<strong>天生就在 Claude Tag 主动绕开的"多 Bot 场域"里</strong>，所以不该照抄它的"单一共享身份"，而应<strong>反向取长</strong>：把 Claude Tag 的强项（共享上下文、持续记忆、可控主动、治理）补进元宝派，同时守住并放大元宝派"多 Bot"这个 Claude Tag 没有的原生优势。</p>
+
+<div class="card">
+  <h3 style="margin-top:0">先看清"能抄什么 / 要反过来做什么"</h3>
+  <table style="margin:8px 0 0;border:none">
+    <thead><tr><th style="width:150px">维度</th><th>Claude Tag</th><th>元宝派现状</th><th style="width:150px">对元宝派的动作</th></tr></thead>
+    <tbody>
+      <tr><td class="feat" style="width:150px">身份形态</td><td>一场域一个共享 AI</td><td>多 Bot（默认一个元宝）</td><td><strong>守住多 Bot</strong>，别退回单 AI</td></tr>
+      <tr><td class="feat" style="width:150px">共享上下文</td><td>强（全员看得到、可接力）</td><td>弱（多 Bot 各聊各的易割裂）</td><td><strong>补</strong>：共享上下文 + 接力</td></tr>
+      <tr><td class="feat" style="width:150px">持续记忆</td><td>强（频道记忆/第二大脑）</td><td>弱（会话级为主）</td><td><strong>补</strong>：派级共建知识库</td></tr>
+      <tr><td class="feat" style="width:150px">主动性</td><td>可控主动（routine 驱动）</td><td>多为被动应答</td><td><strong>补</strong>：可控主动 + 协同主动</td></tr>
+      <tr><td class="feat" style="width:150px">治理</td><td>强（花费/审计/权限）</td><td>待完善</td><td><strong>补</strong>：多 Bot 治理</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="opp p0">
+  <h4><span class="prio p0">P0</span>给多 Bot 场域补"共享上下文层"——解决多 Bot 最大的痛</h4>
+  <p>元宝派是多人多 Bot IM，最容易犯的病是<strong>上下文割裂</strong>：用户对元宝说的、对垂直 Bot 说的、Bot 之间做的，彼此不知道。Claude Tag 的核心价值恰是"<strong>一个共享的上下文 + 全员可见 + 可接力</strong>"。元宝派应把它<strong>从"单 AI 的属性"改造成"整个派的属性"</strong>：让派内所有 Bot 共读同一份派级上下文、一个 Bot 的产出另一个 Bot 和所有人都看得到、能接着干。这是把"一堆 Bot"变成"一个协作体"的地基。</p>
+</div>
+
+<div class="opp p0">
+  <h4><span class="prio p0">P0</span>派级共建知识库（第二大脑）——直接照搬双轨制</h4>
+  <p>Claude Tag 的"<strong>管理员打底（ZIP/GitHub 导入已有资料）+ 全员日常自动沉淀（"记住这个口吻/这个约定"）+ 定时梳理</strong>"双轨制，天然适配元宝派"社群共享知识"的诉求。落到元宝派：让<strong>派主/管理员先灌入本派的背景资料，派内成员日常聊天自动沉淀进"派记忆"，多个 Bot 共享这份记忆</strong>。价值锚点：<strong>新入派的人、不懂配置的普通用户，一进来就能得到贴合本派上下文的高质量回应</strong>——这是社群留存与门槛的关键。记忆载体可用结构化文件按"派/子群"分库（借鉴 .md 分 scope 的做法）。</p>
+</div>
+
+<div class="opp p1">
+  <h4><span class="prio p1">P1 · 差异化王牌</span>多 Bot 协同主动——走 Claude Tag 主动绕开的路</h4>
+  <p>这是元宝派<strong>相对 Claude Tag 的结构性优势</strong>：Claude Tag 为了可预测和干净审计，<strong>刻意选了"一场域一身份"，放弃了多 Bot 编队</strong>；而元宝派天生多 Bot。于是元宝派能做它做不到的<strong>"协同主动"</strong>——一个 Bot 的发现触发另一个 Bot 行动（如：内容 Bot 发现热点 → 主动招呼数据 Bot 拉数据 → 招呼文案 Bot 起草）。<strong>把"多 Bot"从"多个入口"升级成"一支会互相配合的 AI 小队"，这是元宝派最该打的差异化牌。</strong></p>
+  <div class="callout coral" style="margin:12px 0 0">
+    <div class="lbl">两个必须当第一优先级设计的坑</div>
+    ① <strong>触发风暴 / 回声室</strong>：Bot 互相触发最容易"停不下来"——必设触发深度上限、去重、冷却期、人在环熔断。<br>
+    ② <strong>责任归属</strong>：一个对外结果是多个 Bot 接力的产物，谁负责、审计链怎么串——这是比技术更难的产品设计。
+  </div>
+</div>
+
+<div class="opp p1">
+  <h4><span class="prio p1">P1</span>可控的主动——让元宝/Bot 会主动，但不"话痨"</h4>
+  <p>元宝派多为被动应答，若要更"活"，务必照搬 Claude Tag 的克制机制：<strong>主动能力需显式开启、由用户/派主控触发规则与频率、全场域可见可关</strong>。用 routine（定时 / 事件，如"派里有人问到 X 就召唤对应 Bot"）圈定主动边界，模型只在边界内判断"该不该冒泡"。<strong>在多人 IM 场域，"AI 话痨"比"AI 沉默"更伤体验</strong>——这条对元宝派尤其重要。</p>
+</div>
+
+<div class="opp p1">
+  <h4><span class="prio p1">P1</span>多 Bot 治理——默认隔离 + 按需授权联动</h4>
+  <p>多 Bot + 多人场域的权限比单 AI 复杂得多。借鉴 Claude Tag 的隔离哲学：<strong>每个 Bot 权限跟场景走、越权当场被拒且可解释、跨 Bot/跨群联动需显式授权</strong>。再加多 Bot 特有的治理：<strong>哪个 Bot 能被谁召唤、Bot 间能否互相触发、协同链的完整审计</strong>。"默认隔离 + 按需授权联动"能兼顾协同价值与安全底线。</p>
+</div>
+
+<div class="callout teal">
+  <div class="lbl">一句话总纲</div>
+  Claude Tag 走的是"<strong>把一个 AI 做成靠谱同事</strong>"；元宝派的机会是"<strong>把一群 Bot 做成靠谱小队</strong>"。可借鉴的是 Claude Tag 那套让 AI 变可靠的底层功夫（共享上下文、持续记忆、可控主动、边界治理）；不可照抄的是它的"单一身份"——那恰是元宝派"多 Bot"要反着做、并做成王牌的地方。
+</div>
+
+<div class="footnote">
+  <strong>资料来源</strong>：Anthropic 官方产品页 claude.com/product/tag · 官方文档 claude.com/docs/claude-tag（agent-identity / attach-to-scope / proactivity / how-it-works）· 官方演示视频 YouTube VojDzHaciKQ · 第三方实测视频 YouTube _cdX8xkKj_s、F5DXjhBqV9I（非官方，实现细节以官方文档为准）· 机器之心《一夜之间，Claude 成我同事了》(2026-06-24) · Computerworld。<br>
+  凡标注「第三方实测」的能力均来自博主演示，可信度高于营销页但非官方口径。本文为产品调研，第 4 节含产品建议与主观判断，仅供决策参考。
+</div>
+
+</div>
+</body>
+</html>
