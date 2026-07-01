@@ -294,6 +294,11 @@
   <div class="lbl">官方视频实证（01:45）</div>
   演示里最直观的一幕：法务频道能看合同、工程频道能改代码；<strong>但在法务频道要它改代码，会因无对应权限直接拒绝执行</strong>。这就是上表「两者都不匹配 → 拦截」的真实画面——隔离不是靠模型"懂事不做"，而是<strong>请求在边界上根本过不去</strong>。国内做 AI 治理时，"越权当场被拒 + 可解释为什么被拒"应作为可演示的验收点。
 </div>
+<div class="callout blue">
+  <div class="lbl">后台截图实证：Access bundle 长什么样</div>
+  后台配置里，Access bundle 是一个<strong>可下拉选择、可"+新建"的权限包列表</strong>，每个 bundle 按用途命名，对应一类专精身份的能力边界。真实样例：<strong>AI OS Meetings Access / Community Feed Access / Lead Researcher Access / Marketing Claude Access / Team Chat Access / YT Production Access</strong>（还有一个未命名的 "Untitled profile"）。<br>
+  两个要点：① 菜单里 "Access" 与 "profile" 混用，说明 <strong>bundle ≈ profile</strong>——一个包 = "能访问什么 + 怎么行为"的整套配置；② 这些"专精身份"是<strong>同一个 Claude 换不同的权限/行为外套</strong>，不是多个能互相协作的 Bot——<strong>多样性靠"多 bundle"实现，而非"多身份"</strong>，再次印证第 8 节 P2 的厘清。
+</div>
 
 <h3>6.2 记忆隔离：按 scope 分库，私有频道"只进不出"</h3>
 <p>另一半隔的是"Claude 记得什么"。官方明确：<strong>不存在组织级记忆</strong>。关键在私有频道的<strong>读写不对称</strong>。</p>
