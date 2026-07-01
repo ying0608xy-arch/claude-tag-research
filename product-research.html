@@ -228,8 +228,8 @@
   <div class="card">
     <span class="tag t-amber">① 初始打底（手动灌）</span>
     <ul>
-      <li><strong>ZIP 导入</strong>：本地知识库（如 Obsidian）打包成 ZIP，Slack 里发给 Claude 重构为记忆层</li>
-      <li><strong>GitHub 挂载</strong>：知识库放仓库、后台授权挂载，利于跨平台版本控制</li>
+      <li><strong>ZIP 导入</strong>：本地知识库（如 Obsidian）打包成多个 ZIP，Slack 里发给 Claude，令其重构为记忆层</li>
+      <li><strong>GitHub 挂载</strong>：知识库放仓库、后台授权 repo，利于跨平台版本控制与频繁更新</li>
     </ul>
   </div>
   <div class="card">
@@ -241,10 +241,25 @@
     </ul>
   </div>
 </div>
+
+<h4 style="margin-top:24px">方式一：ZIP 导入的真实链路（第三方实测截图）</h4>
+<p>用户 @Claude 上传多个 ZIP（Context / Daily / Projects / Resources / Youtube / Onboarding / Tasks / Intelligence）+ 一个 <code>CLAUDE.md</code>，指令"按图重构进本频道 memory"。Claude 回执显示：<strong>8 个 zip 解压进对应根文件夹（含各自文件数，如 Intelligence 1049 项）、CLAUDE.md 放在 memory 根并带真实 frontmatter <code>os-mode: business</code>、验证完整目录树无双层嵌套、全部落到 channel scope（<code>team/silo/channel/C09U0JF6B7Z/</code>）</strong>。</p>
+<img src="img/memory-zip-rebuild.png" alt="Claude 重构 ZIP 为频道记忆的回执" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
+<p style="font-size:13px;color:var(--ink3)">关键证据：记忆不是"一坨文本"，而是<strong>带目录结构的文件树 + CLAUDE.md 做根配置</strong>，且明确归属到 channel scope。</p>
+
+<h4 style="margin-top:24px">记忆是可视化、可治理的（后台管理台截图）</h4>
+<p>后台 <code>admin-settings/claude-tag/memory</code> 是一个完整的记忆管理台：左侧按 <strong>Scope（Slack / 各频道：ai-os-meetings、community-feed、marketing-claude…）</strong> 分，中间是记忆文件树（brand.md / icp.md / strategy.md / Daily 按日期…），右侧可<strong>查看 / 编辑 / 删除</strong>单个记忆文件（含 frontmatter）。</p>
+<img src="img/memory-admin.png" alt="Claude Tag 后台记忆管理台" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
+
+<h4 style="margin-top:24px">方式二：GitHub 挂载的真实链路（授权 UI 截图）</h4>
+<p>在 Access bundle 的 <strong>Repositories</strong> 标签里，给 Claude 授权访问组织的具体 repo（图中 BenAIOS 组织下的 <code>benai-os-main</code>、<code>benai-skills-main</code> 两个仓库）；同一弹窗还有 Credentials / Domains / Plugins / Instructions 标签。<strong>这种方式适合需要频繁更新、跨平台同步的团队</strong>——改仓库即更新记忆，天然带版本控制。</p>
+<img src="img/github-auth.png" alt="Claude Tag GitHub 仓库授权界面" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
+
 <div class="callout teal">
-  <div class="lbl">两个产品洞察</div>
-  ① <strong>记忆载体是结构化文本文件（.md），按 scope 分库</strong>——"越用越懂"不是玄学，难点不在存储，而在"写什么、何时更新、按 scope 隔离读写"。<br>
-  ② 真正的价值是<strong>把"全公司第二大脑"部署给共享 Agent 后，非技术员工不做任何配置，也能拿到贴合公司实情的高质量输出</strong>——这才是"降低 AI 门槛"的真抓手。
+  <div class="lbl">三个产品洞察（据截图升级）</div>
+  ① <strong>记忆载体是带 frontmatter 的 .md 文件树，按 scope 分库、用 CLAUDE.md 做根配置</strong>——"越用越懂"不是玄学，难点不在存储，而在"写什么、何时更新、按 scope 隔离读写"。<br>
+  ② <strong>记忆是可视化可治理的资产</strong>：有专门的管理台，按 scope 分、逐文件可增删改——记忆不仅要能共享，还要能"被看见、被管理"。<br>
+  ③ 真正的价值是<strong>把"全公司第二大脑"部署给共享 Agent 后，非技术员工不做任何配置，也能拿到贴合公司实情的高质量输出</strong>——这才是"降低 AI 门槛"的真抓手。
 </div>
 
 <h2><span class="n">4</span>对元宝派的可借鉴意义</h2>
@@ -286,7 +301,7 @@
   <div class="callout amber" style="margin:12px 0 0">
     <div class="lbl">为什么它同时是 P0 短板和最大差异化</div>
     Claude Tag 靠"只有一个身份"天然共享记忆（简单但没多 Bot）；元宝派要在"多个独立 Bot"之间共享记忆，<strong>难度更高，但一旦打通，价值也更高</strong>。这道题必须配套第 4 条的治理（谁能读、读多少、是否入审计）一起解——记忆开放和权限治理是同一枚硬币的两面。<br>
-    <strong>可借鉴的现成做法</strong>：Claude Tag 后台已经把"<strong>某频道/身份是否能访问全局记忆</strong>"做成了一个<strong>频道级权限开关</strong>（第三方实测）。元宝派的"派级记忆总线"正该是这个思路——<strong>把"某个自建 Bot 能否读派记忆、读到哪层"做成一个可授权的开关</strong>，而非全有或全无。
+    <strong>可借鉴的现成做法</strong>：Claude Tag 后台已经把"<strong>某频道/身份是否能访问全局记忆</strong>"做成了一个<strong>频道级权限开关</strong>，还配了一个<strong>按 scope 分、逐文件可增删改的记忆管理台</strong>（见第 3.2 节截图）。元宝派的"派级记忆总线"正该是这个思路——<strong>把"某个自建 Bot 能否读派记忆、读到哪层"做成可授权的开关，并给派主一个"派记忆可视化管理台"</strong>；记忆不只是能共享，还要能被看见、被治理。
   </div>
 </div>
 
