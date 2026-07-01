@@ -169,9 +169,10 @@
   <thead><tr><th style="width:150px">功能</th><th>做什么</th></tr></thead>
   <tbody>
     <tr><td class="feat">@ 派活</td><td>频道/thread/私信里自然语言派活，拆阶段执行，thread 内贴实时执行清单</td></tr>
-    <tr><td class="feat">接外部工具</td><td>代码库、工单、数仓、任意有 API 的工具，经 connections/plugins/skills 接入（自定义技能目前经 GitHub 仓库挂载）<span class="badge">部分第三方实测</span></td></tr>
-    <tr><td class="feat">身份与权限</td><td>频道内以服务账号身份行动；权限"跟频道走不跟人走"，管理员按 scope 配 Access bundle</td></tr>
-    <tr><td class="feat">持续记忆</td><td>按 scope 分库；公开频道写 workspace 共享库，私有频道只写自己独立库；无组织级记忆</td></tr>
+    <tr><td class="feat">接外部工具</td><td>官方插件默认内置；<strong>自定义技能需先用 Claude Code 生成代码、在 GitHub 建自己的"技能市场"仓库、再后台绑定</strong>（不能直接在下拉里选）；外部连接器可接第三方（实测例：Apify 抓取 / Calendly 日程 / VidIQ）<span class="badge">部分第三方实测</span></td></tr>
+    <tr><td class="feat">身份与权限</td><td>频道内以服务账号身份行动；权限"跟频道走不跟人走"，管理员按 scope 配 Access bundle；<strong>可精确到频道级：能调哪些连接器/技能、以及是否能访问全局记忆</strong></td></tr>
+    <tr><td class="feat">持续记忆</td><td><strong>两层级：频道级 + 工作区级</strong>；主动记忆（自动记重要对话）+ 被动记忆（"记住这是 Ben 的账号"强制生成）；按 scope 分库、无组织级记忆</td></tr>
+    <tr><td class="feat">频道级指令</td><td>每个频道可设独立全局指令——不止"做什么"，也含<strong>行为/语气规则</strong>（如"此频道大家很忙，回答务必简明"）<span class="badge">第三方实测</span></td></tr>
     <tr><td class="feat">主动 routine</td><td>定时任务 / 频道监听 / 订阅 PR（及业务事件），自然语言设定，全频道可见可关</td></tr>
     <tr><td class="feat">私信 DM</td><td>用你个人账号的连接器，走个人席位额度，结果归属到你（与频道模式相反）</td></tr>
     <tr><td class="feat">治理</td><td>组织/频道级 token 花费上限 + 全量操作审计 + 任务发起人可查</td></tr>
@@ -284,7 +285,8 @@
   <p style="margin-top:8px">所以这不是"锦上添花的机会"，而是<strong>元宝派离"一个协作体"最远的一环、头号短板</strong>。关键动作：把官方元宝 Bot 的派级记忆<strong>抽象成一层"派级记忆总线 / 派上下文 API"</strong>，让自建 Bot 能<strong>按授权、受控地读（甚至写）</strong>这份共享上下文。做成了，元宝派就实现了连 Claude Tag 都没做到的事——<strong>多个异构 Bot 共享同一份派级记忆、可接力</strong>；这正是双轨模型能反超单一身份的支点。</p>
   <div class="callout amber" style="margin:12px 0 0">
     <div class="lbl">为什么它同时是 P0 短板和最大差异化</div>
-    Claude Tag 靠"只有一个身份"天然共享记忆（简单但没多 Bot）；元宝派要在"多个独立 Bot"之间共享记忆，<strong>难度更高，但一旦打通，价值也更高</strong>。这道题必须配套第 4 条的治理（谁能读、读多少、是否入审计）一起解——记忆开放和权限治理是同一枚硬币的两面。
+    Claude Tag 靠"只有一个身份"天然共享记忆（简单但没多 Bot）；元宝派要在"多个独立 Bot"之间共享记忆，<strong>难度更高，但一旦打通，价值也更高</strong>。这道题必须配套第 4 条的治理（谁能读、读多少、是否入审计）一起解——记忆开放和权限治理是同一枚硬币的两面。<br>
+    <strong>可借鉴的现成做法</strong>：Claude Tag 后台已经把"<strong>某频道/身份是否能访问全局记忆</strong>"做成了一个<strong>频道级权限开关</strong>（第三方实测）。元宝派的"派级记忆总线"正该是这个思路——<strong>把"某个自建 Bot 能否读派记忆、读到哪层"做成一个可授权的开关</strong>，而非全有或全无。
   </div>
 </div>
 
