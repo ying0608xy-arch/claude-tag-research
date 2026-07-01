@@ -222,6 +222,29 @@
   <strong>产品价值提炼</strong>：它的高明不在"能主动"，而在"<strong>可控的主动</strong>"——需显式开启、管理员控频率、全频道可见可关，用制度约束把"AI 话痨"的风险摁住了。
 </div>
 
+<p style="margin-top:20px">主动性在实测里表现为三种递进的形态。它们改变的是同一件事：<strong>把 AI 从"被动触发的工具"变成"会自己找活干的数字员工"</strong>。</p>
+
+<h4 style="margin-top:22px">形态一：前摄性回复——不必 @ 就参与讨论</h4>
+<p>AI 成为频道里的"隐形参与者"，感知对话上下文，在能提供价值时主动介入。实测场景：团队在 yt-production 频道讨论新视频标题，<strong>没有手动 @Claude</strong>，Claude 识别到这是头脑风暴、主动给出标题建议。业务价值：员工不必切换到"向 AI 下指令"的思维，降低使用摩擦。</p>
+<img src="img/proactive-reply.png" alt="团队讨论标题时 Claude 主动介入" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
+<div class="callout amber" style="margin:8px 0">
+  <div class="lbl">严谨标注</div>
+  以上为第三方实测<strong>现象</strong>。机制上，这种"主动介入"大概率由一条 <strong>watch 本频道的 routine</strong> 支撑（模型被唤醒后判断是否值得发言）；<strong>是否为"无任何配置、纯聊天内容实时触发"，官方文档未证实</strong>，对外表述应区分"实测演示"与"官方保证"。
+</div>
+
+<h4 style="margin-top:22px">形态二：自动工作流——事件驱动的零人工干预</h4>
+<p>管理员为频道设基于事件的自动触发条件，条件满足即在后台静默跑完整套预设工作流。实测场景（销售频道）：Calendly 在 #ai-os-meetings 推送"新客户预约"通知 → 潜伏的"Lead Researcher"Agent 被触发 → 自动调用连接器（Apify/Firecrawl 等）搜客户 LinkedIn 与公司官网 → 几秒内在频道生成<strong>会议准备简报（Call Prep Brief）</strong>，含公司/联系人总结、建议议程、<strong>客户可能提出的异议</strong>。业务价值：销售开会前 15–30 分钟的手动背调，变成"会议一约，专家级简报已在手边"。</p>
+<img src="img/proactive-lead-brief.png" alt="Calendly 新线索触发 Claude 自动生成会议简报" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
+
+<h4 style="margin-top:22px">形态三：定时任务——自然语言驱动的调度中心</h4>
+<p>无需写 Cron、无需 Zapier/Make，直接在聊天框用大白话设周期任务。实测场景："每天早上 9 点发一份每日简报，总结过去 24 小时全业务，以仪表盘形式交付" → Claude 每天准时抓 YouTube 数据、社区动态、需紧急处理的升级事件，汇成结构化面板。<strong>高阶用法</strong>：定时任务还能用来<strong>自我维护记忆库</strong>——定期把 Slack 新上下文结构化、更新进"第二大脑"，实现知识库自动复合增长。下图是 Claude 把"定时导出"需求主动拆成开发任务（workspace_schedules 表 / Cron dispatcher / 回填 job）的对话。</p>
+<img src="img/proactive-schedule-tasks.png" alt="Claude 把定时导出需求拆成开发任务" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
+
+<div class="callout teal">
+  <div class="lbl">三形态的递进关系</div>
+  前摄性回复（<strong>会说话</strong>）→ 自动工作流（<strong>会干活</strong>）→ 定时任务（<strong>会自我调度、自我维护</strong>）。三者叠加，才凑齐"数字员工"的完整画像。对国内的提醒依旧是那句：<strong>越往后越强，越要配"可控"</strong>——事件触发要防误触发、定时任务要可见可关、自动工作流要留人在环的审核点。
+</div>
+
 <h3>3.2 亮点二：团队共建知识库（第二大脑）</h3>
 <p class="lead">这是把"持续记忆"做成产品的关键。采用<strong>"管理员集中打底 + 全员日常自动进化"双轨制</strong>，让知识库从个人壁垒变成全员共享的企业上下文。<span class="badge">主要据第三方实测，实现细节以官方为准</span></p>
 <div class="grid2">
