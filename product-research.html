@@ -270,8 +270,8 @@
     <thead><tr><th style="width:130px">维度</th><th>Claude Tag</th><th>元宝派现状（双轨）</th><th style="width:160px">对元宝派的动作</th></tr></thead>
     <tbody>
       <tr><td class="feat" style="width:130px">身份形态</td><td>一场域一个共享 AI</td><td>官方元宝 + 多个自建 Bot</td><td><strong>守住双轨</strong>，别退回单 AI</td></tr>
-      <tr><td class="feat" style="width:130px">派级记忆</td><td>强（频道记忆/第二大脑）</td><td><strong>已有雏形</strong>：官方元宝记忆跟派走</td><td><strong>放大</strong>：升级为派级第二大脑</td></tr>
-      <tr><td class="feat" style="width:130px">跨 Bot 共享记忆</td><td>单身份内自有</td><td>弱（自建 Bot 易成记忆孤岛）</td><td><strong>补</strong>：受控地让自建 Bot 读派级记忆</td></tr>
+      <tr><td class="feat" style="width:130px">派级记忆</td><td>强（频道记忆/第二大脑）</td><td>官方元宝记忆跟派走（<strong>仅官方 Bot 独享</strong>）</td><td><strong>放大</strong>：升级为派级第二大脑</td></tr>
+      <tr><td class="feat" style="width:130px">跨 Bot 共享记忆</td><td>单身份内自有</td><td style="color:var(--red)"><strong>断裂</strong>：自建 Bot 读不到官方派记忆 → 各自孤岛</td><td><strong>补（最核心短板）</strong>：打通派级记忆总线</td></tr>
       <tr><td class="feat" style="width:130px">主动性</td><td>可控主动（routine）</td><td>多为被动应答</td><td><strong>补</strong>：可控主动 + 协同主动</td></tr>
       <tr><td class="feat" style="width:130px">治理</td><td>强（花费/审计/权限）</td><td>官方Bot可控，自建Bot待治理</td><td><strong>补</strong>：双轨 Bot 治理（重点）</td></tr>
     </tbody>
@@ -279,13 +279,18 @@
 </div>
 
 <div class="opp p0">
-  <h4><span class="prio p0">P0</span>把官方元宝 Bot 做成"派级记忆锚点"，并受控开放给自建 Bot</h4>
-  <p>元宝派其实<strong>已经有了共享上下文的雏形</strong>——官方元宝 Bot 记忆跟派走。真正的关键动作是回答一个问题：<strong>官方元宝的派级记忆，能不能被派内自建 Bot（受控地）读到？</strong> 能 → 元宝派就做成了连 Claude Tag 都没做到的事：<strong>多个 Bot 共享同一份派级记忆、可接力</strong>；不能 → 自建 Bot 沦为一座座记忆孤岛，退回 Discord 那种割裂。所以第一刀是：<strong>把官方元宝 Bot 升级为"派魂/记忆底座"，并设计一套"自建 Bot 按授权读派级记忆"的机制</strong>。这是把"一派多 Bot"变成"一个协作体"的地基。</p>
+  <h4><span class="prio p0">P0 · 头号短板</span>打通"派级记忆总线"——让自建 Bot 能受控读到派记忆</h4>
+  <p><strong>现状（已确认）</strong>：官方元宝 Bot 有派级记忆，但<strong>自建 Bot 读不到它</strong>——两轨记忆是断的。后果很直接：官方元宝懂这个派，自建 Bot 不懂；用户跟官方元宝交代过的背景，换个自建 Bot 得从头再说一遍。<strong>这让元宝派虽是"多 Bot 场域"，却退回了 Discord 那种"每个 Bot 各自孤岛"的割裂——"多 Bot 共享派上下文"目前根本不成立。</strong></p>
+  <p style="margin-top:8px">所以这不是"锦上添花的机会"，而是<strong>元宝派离"一个协作体"最远的一环、头号短板</strong>。关键动作：把官方元宝 Bot 的派级记忆<strong>抽象成一层"派级记忆总线 / 派上下文 API"</strong>，让自建 Bot 能<strong>按授权、受控地读（甚至写）</strong>这份共享上下文。做成了，元宝派就实现了连 Claude Tag 都没做到的事——<strong>多个异构 Bot 共享同一份派级记忆、可接力</strong>；这正是双轨模型能反超单一身份的支点。</p>
+  <div class="callout amber" style="margin:12px 0 0">
+    <div class="lbl">为什么它同时是 P0 短板和最大差异化</div>
+    Claude Tag 靠"只有一个身份"天然共享记忆（简单但没多 Bot）；元宝派要在"多个独立 Bot"之间共享记忆，<strong>难度更高，但一旦打通，价值也更高</strong>。这道题必须配套第 4 条的治理（谁能读、读多少、是否入审计）一起解——记忆开放和权限治理是同一枚硬币的两面。
+  </div>
 </div>
 
 <div class="opp p0">
   <h4><span class="prio p0">P0</span>派级共建知识库（第二大脑）——直接照搬双轨制</h4>
-  <p>元宝派的"派记忆"已由官方元宝 Bot 承载，缺的是<strong>把它从"自动记的"升级为"可主动共建的"</strong>。照搬 Claude Tag 的双轨制：<strong>派主/管理员先灌入本派背景资料（导入已有文档）+ 派内成员日常聊天自动沉淀 + 对话级指令（"记住本派用这个口吻"）+ 定时梳理</strong>。价值锚点：<strong>新入派的人、不懂配置的普通用户，一进来就能得到贴合本派上下文的高质量回应</strong>——这是社群留存与门槛的关键。记忆载体可用结构化文件按"派/子群"分库（借鉴 .md 分 scope 的做法）。注意与上一条的分工：上一条解决"自建 Bot 能不能读派记忆"，这一条解决"派记忆本身怎么变厚变准"。</p>
+  <p>元宝派的"派记忆"已由官方元宝 Bot 承载，缺的是<strong>把它从"自动记的"升级为"可主动共建的"</strong>。照搬 Claude Tag 的双轨制：<strong>派主/管理员先灌入本派背景资料（导入已有文档）+ 派内成员日常聊天自动沉淀 + 对话级指令（"记住本派用这个口吻"）+ 定时梳理</strong>。价值锚点：<strong>新入派的人、不懂配置的普通用户，一进来就能得到贴合本派上下文的高质量回应</strong>——这是社群留存与门槛的关键。记忆载体可用结构化文件按"派/子群"分库（借鉴 .md 分 scope 的做法）。注意与上一条的分工：上一条解决"派记忆能不能被自建 Bot 读到（打通）"，这一条解决"派记忆本身怎么变厚变准（充实）"——先打通再充实，两条配套做。</p>
 </div>
 
 <div class="opp p1">
@@ -310,7 +315,7 @@
 
 <div class="callout teal">
   <div class="lbl">一句话总纲（校准版）</div>
-  Claude Tag = 单 AI 的<strong>可靠</strong>（官方托管、派级记忆、强治理，但没多 Bot）；Discord = 多 Bot 的<strong>自由</strong>（开发者自建，但记忆割裂、治理靠自己）。<strong>元宝派天生双轨，已同时握有两者的一半——官方元宝 Bot 给"可靠底座"，自建 Bot 给"多 Bot 自由"。</strong>它的机会不是二选一，而是把两半焊成一体：<strong>以官方元宝 Bot 为派魂/记忆锚点，受控地把派级记忆与协同能力开放给自建 Bot，做成"一支既灵活又靠谱的 AI 小队"。</strong>
+  Claude Tag = 单 AI 的<strong>可靠</strong>（官方托管、派级记忆、强治理，但没多 Bot）；Discord = 多 Bot 的<strong>自由</strong>（开发者自建，但记忆割裂、治理靠自己）。<strong>元宝派天生双轨，同时握有两者的一半——官方元宝 Bot 给"可靠底座"，自建 Bot 给"多 Bot 自由"。但两半目前是"焊缝断开"的：官方 Bot 的派级记忆自建 Bot 读不到。</strong>它的机会不是二选一，而是<strong>把这道焊缝焊上</strong>：以官方元宝 Bot 为派魂/记忆锚点，<strong>打通一层"派级记忆总线"</strong>受控开放给自建 Bot，配套双轨治理，才能真正做成"一支既灵活又靠谱的 AI 小队"。<strong>焊缝没焊上之前，元宝派只是"住在一起的一群陌生 Bot"，还不是"一支小队"。</strong>
 </div>
 
 <div class="footnote">
