@@ -247,30 +247,45 @@
 </div>
 
 <h2><span class="n">4</span>对元宝派的可借鉴意义</h2>
-<p class="lead">元宝派现状：<strong>多人 + 多 Bot（默认一个元宝）通过 IM 形态交互的场域</strong>。这个定位决定了借鉴的方向——元宝派<strong>天生就在 Claude Tag 主动绕开的"多 Bot 场域"里</strong>，所以不该照抄它的"单一共享身份"，而应<strong>反向取长</strong>：把 Claude Tag 的强项（共享上下文、持续记忆、可控主动、治理）补进元宝派，同时守住并放大元宝派"多 Bot"这个 Claude Tag 没有的原生优势。</p>
+<p class="lead">元宝派现状是<strong>「双轨 Bot」的多人 IM 场域</strong>：① <strong>官方元宝 Bot</strong>（建派默认自带，官方托管，<strong>记忆跟着派走</strong>）；② <strong>自建 Bot</strong>（用户可拉进派，权限/记忆由开发者或 C 端用户自定义）。这个形态很关键——它<strong>已经天然同时含有 Claude Tag 和 Discord 各自的一半基因</strong>：官方元宝 Bot 的"派级记忆"对齐 Claude Tag 的共享身份/持续记忆；自建 Bot 的"自管权限记忆"对齐 Discord 的开发者自建模型。</p>
 
 <div class="card">
-  <h3 style="margin-top:0">先看清"能抄什么 / 要反过来做什么"</h3>
+  <span class="tag t-purple">形态坐标</span>
+  <h3 style="margin-top:6px">元宝派 = Claude Tag 的"可靠底座" + Discord 的"多 Bot 自由"</h3>
+  <div class="grid2" style="gap:20px;margin-top:6px">
+    <div>
+      <h4>官方元宝 Bot（≈ Claude Tag 基因）</h4>
+      <p style="font-size:14px;color:var(--ink2)">官方托管、记忆绑定在"派"这个 scope 上（不绑人、不绑会话）——天然就是派的<strong>记忆锚点 / 派魂</strong>，是 Claude Tag"共享身份 + 第二大脑"在元宝派里的现成载体。</p>
+    </div>
+    <div>
+      <h4>自建 Bot（≈ Discord 基因）</h4>
+      <p style="font-size:14px;color:var(--ink2)">用户/开发者自建、自定义权限与记忆——是 Discord"开发者自建 Bot"的模型，带来多样性与生态，也带来记忆孤岛与治理落差的风险。</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">对照：能抄什么 / 已有什么 / 要反过来做什么</h3>
   <table style="margin:8px 0 0;border:none">
-    <thead><tr><th style="width:150px">维度</th><th>Claude Tag</th><th>元宝派现状</th><th style="width:150px">对元宝派的动作</th></tr></thead>
+    <thead><tr><th style="width:130px">维度</th><th>Claude Tag</th><th>元宝派现状（双轨）</th><th style="width:160px">对元宝派的动作</th></tr></thead>
     <tbody>
-      <tr><td class="feat" style="width:150px">身份形态</td><td>一场域一个共享 AI</td><td>多 Bot（默认一个元宝）</td><td><strong>守住多 Bot</strong>，别退回单 AI</td></tr>
-      <tr><td class="feat" style="width:150px">共享上下文</td><td>强（全员看得到、可接力）</td><td>弱（多 Bot 各聊各的易割裂）</td><td><strong>补</strong>：共享上下文 + 接力</td></tr>
-      <tr><td class="feat" style="width:150px">持续记忆</td><td>强（频道记忆/第二大脑）</td><td>弱（会话级为主）</td><td><strong>补</strong>：派级共建知识库</td></tr>
-      <tr><td class="feat" style="width:150px">主动性</td><td>可控主动（routine 驱动）</td><td>多为被动应答</td><td><strong>补</strong>：可控主动 + 协同主动</td></tr>
-      <tr><td class="feat" style="width:150px">治理</td><td>强（花费/审计/权限）</td><td>待完善</td><td><strong>补</strong>：多 Bot 治理</td></tr>
+      <tr><td class="feat" style="width:130px">身份形态</td><td>一场域一个共享 AI</td><td>官方元宝 + 多个自建 Bot</td><td><strong>守住双轨</strong>，别退回单 AI</td></tr>
+      <tr><td class="feat" style="width:130px">派级记忆</td><td>强（频道记忆/第二大脑）</td><td><strong>已有雏形</strong>：官方元宝记忆跟派走</td><td><strong>放大</strong>：升级为派级第二大脑</td></tr>
+      <tr><td class="feat" style="width:130px">跨 Bot 共享记忆</td><td>单身份内自有</td><td>弱（自建 Bot 易成记忆孤岛）</td><td><strong>补</strong>：受控地让自建 Bot 读派级记忆</td></tr>
+      <tr><td class="feat" style="width:130px">主动性</td><td>可控主动（routine）</td><td>多为被动应答</td><td><strong>补</strong>：可控主动 + 协同主动</td></tr>
+      <tr><td class="feat" style="width:130px">治理</td><td>强（花费/审计/权限）</td><td>官方Bot可控，自建Bot待治理</td><td><strong>补</strong>：双轨 Bot 治理（重点）</td></tr>
     </tbody>
   </table>
 </div>
 
 <div class="opp p0">
-  <h4><span class="prio p0">P0</span>给多 Bot 场域补"共享上下文层"——解决多 Bot 最大的痛</h4>
-  <p>元宝派是多人多 Bot IM，最容易犯的病是<strong>上下文割裂</strong>：用户对元宝说的、对垂直 Bot 说的、Bot 之间做的，彼此不知道。Claude Tag 的核心价值恰是"<strong>一个共享的上下文 + 全员可见 + 可接力</strong>"。元宝派应把它<strong>从"单 AI 的属性"改造成"整个派的属性"</strong>：让派内所有 Bot 共读同一份派级上下文、一个 Bot 的产出另一个 Bot 和所有人都看得到、能接着干。这是把"一堆 Bot"变成"一个协作体"的地基。</p>
+  <h4><span class="prio p0">P0</span>把官方元宝 Bot 做成"派级记忆锚点"，并受控开放给自建 Bot</h4>
+  <p>元宝派其实<strong>已经有了共享上下文的雏形</strong>——官方元宝 Bot 记忆跟派走。真正的关键动作是回答一个问题：<strong>官方元宝的派级记忆，能不能被派内自建 Bot（受控地）读到？</strong> 能 → 元宝派就做成了连 Claude Tag 都没做到的事：<strong>多个 Bot 共享同一份派级记忆、可接力</strong>；不能 → 自建 Bot 沦为一座座记忆孤岛，退回 Discord 那种割裂。所以第一刀是：<strong>把官方元宝 Bot 升级为"派魂/记忆底座"，并设计一套"自建 Bot 按授权读派级记忆"的机制</strong>。这是把"一派多 Bot"变成"一个协作体"的地基。</p>
 </div>
 
 <div class="opp p0">
   <h4><span class="prio p0">P0</span>派级共建知识库（第二大脑）——直接照搬双轨制</h4>
-  <p>Claude Tag 的"<strong>管理员打底（ZIP/GitHub 导入已有资料）+ 全员日常自动沉淀（"记住这个口吻/这个约定"）+ 定时梳理</strong>"双轨制，天然适配元宝派"社群共享知识"的诉求。落到元宝派：让<strong>派主/管理员先灌入本派的背景资料，派内成员日常聊天自动沉淀进"派记忆"，多个 Bot 共享这份记忆</strong>。价值锚点：<strong>新入派的人、不懂配置的普通用户，一进来就能得到贴合本派上下文的高质量回应</strong>——这是社群留存与门槛的关键。记忆载体可用结构化文件按"派/子群"分库（借鉴 .md 分 scope 的做法）。</p>
+  <p>元宝派的"派记忆"已由官方元宝 Bot 承载，缺的是<strong>把它从"自动记的"升级为"可主动共建的"</strong>。照搬 Claude Tag 的双轨制：<strong>派主/管理员先灌入本派背景资料（导入已有文档）+ 派内成员日常聊天自动沉淀 + 对话级指令（"记住本派用这个口吻"）+ 定时梳理</strong>。价值锚点：<strong>新入派的人、不懂配置的普通用户，一进来就能得到贴合本派上下文的高质量回应</strong>——这是社群留存与门槛的关键。记忆载体可用结构化文件按"派/子群"分库（借鉴 .md 分 scope 的做法）。注意与上一条的分工：上一条解决"自建 Bot 能不能读派记忆"，这一条解决"派记忆本身怎么变厚变准"。</p>
 </div>
 
 <div class="opp p1">
@@ -289,13 +304,13 @@
 </div>
 
 <div class="opp p1">
-  <h4><span class="prio p1">P1</span>多 Bot 治理——默认隔离 + 按需授权联动</h4>
-  <p>多 Bot + 多人场域的权限比单 AI 复杂得多。借鉴 Claude Tag 的隔离哲学：<strong>每个 Bot 权限跟场景走、越权当场被拒且可解释、跨 Bot/跨群联动需显式授权</strong>。再加多 Bot 特有的治理：<strong>哪个 Bot 能被谁召唤、Bot 间能否互相触发、协同链的完整审计</strong>。"默认隔离 + 按需授权联动"能兼顾协同价值与安全底线。</p>
+  <h4><span class="prio p1">P1 · 双轨独有难题</span>官方 Bot × 自建 Bot 的治理落差——最该重点解的题</h4>
+  <p>元宝派的真正难点不在"多 Bot"，而在<strong>官方元宝 Bot（可信、记忆可控）与自建 Bot（权限记忆由 C 端用户自定义）在同一个派里共存</strong>。这道题 Claude Tag（只有官方托管身份）和 Discord（全靠开发者自管）<strong>都没完整解过</strong>。元宝派必须自己定义清楚：<strong>自建 Bot 能读派级记忆到什么程度、能不能被官方 Bot 或其他 Bot 召唤、它的行为是否进派级审计、C 端自定义的权限边界在哪</strong>。借鉴 Claude Tag 的隔离哲学落地：<strong>每个 Bot 权限跟场景走、跨 Bot 读记忆/互相触发需显式授权、协同链完整审计</strong>——"默认隔离 + 按需授权联动"。这既是安全底线，也是"官方可信底座敢向第三方 Bot 开放"的前提。</p>
 </div>
 
 <div class="callout teal">
-  <div class="lbl">一句话总纲</div>
-  Claude Tag 走的是"<strong>把一个 AI 做成靠谱同事</strong>"；元宝派的机会是"<strong>把一群 Bot 做成靠谱小队</strong>"。可借鉴的是 Claude Tag 那套让 AI 变可靠的底层功夫（共享上下文、持续记忆、可控主动、边界治理）；不可照抄的是它的"单一身份"——那恰是元宝派"多 Bot"要反着做、并做成王牌的地方。
+  <div class="lbl">一句话总纲（校准版）</div>
+  Claude Tag = 单 AI 的<strong>可靠</strong>（官方托管、派级记忆、强治理，但没多 Bot）；Discord = 多 Bot 的<strong>自由</strong>（开发者自建，但记忆割裂、治理靠自己）。<strong>元宝派天生双轨，已同时握有两者的一半——官方元宝 Bot 给"可靠底座"，自建 Bot 给"多 Bot 自由"。</strong>它的机会不是二选一，而是把两半焊成一体：<strong>以官方元宝 Bot 为派魂/记忆锚点，受控地把派级记忆与协同能力开放给自建 Bot，做成"一支既灵活又靠谱的 AI 小队"。</strong>
 </div>
 
 <div class="footnote">
