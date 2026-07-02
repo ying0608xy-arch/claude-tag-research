@@ -106,6 +106,7 @@
     #toc-toggle{left:16px}
     body.toc-open #toc-toggle{left:264px}
   }
+  code{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -214,6 +215,8 @@
     <figure><img src="img/tp-marketing-agent-ask.png" alt="营销 Agent 指令"><figcaption>"把最新 YouTube 视频改写成 LinkedIn 帖"。</figcaption></figure>
     <figure><img src="img/tp-marketing-agent-result.png" alt="营销 Agent 结果"><figcaption>自动取最新视频、拉转录、跑 LinkedIn writer 技能出稿。</figcaption></figure>
   </div>
+  <p style="font-size:14px;color:var(--ink2);margin-top:12px">这套"定制"是在<strong>组织后台</strong>配出来的——把频道（如 <code>marketing-claude</code>）绑定到一个 <code>Marketing Claude Access</code> 权限包，包里定义好 <strong>Plugins（benai-suite）· Connections（Gmail/Vercel）· Repositories（benai-os / skills）· Custom instructions（这个频道的目标与语气）</strong>。频道内成员无需懂配置，@ 一下就用上这套预设身份。</p>
+  <div class="figsingle"><img src="img/tp-agent-backend.png" alt="频道专属定制智能体的后台配置界面"><figcaption>后台（Organization settings → Claude Tag）：左栏选频道 <code>marketing-claude</code>，右侧即该频道绑定的 Access bundle 全貌——Plugins / Connections / Repositories / Custom instructions 一处配齐。</figcaption></div>
 
   <h4 style="margin-top:20px">④ Access bundle（权限包 / 预设智能体）配置</h4>
   <p style="font-size:14px;color:var(--ink2)">bundle 是可下拉选/新建的权限包（bundle ≈ profile），按用途命名；每个包内含 Credentials / Repositories / Domains / Plugins / Instructions 五类配置——即"这个身份能用什么 + 怎么行为"。</p>
