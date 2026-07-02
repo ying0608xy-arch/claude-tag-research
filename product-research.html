@@ -199,14 +199,39 @@
   <div class="figsingle"><img src="img/off-perm-isolation.png" alt="按频道的权限隔离示意"><figcaption>#legal → Contracts、#eng → Codebase，权限跟频道走、互不越界。</figcaption></div>
 </div>
 <div class="card">
-  <span class="tag t-amber">第三方实测（YouTube，非官方）</span>
-  <p style="margin-top:4px;font-size:12.5px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=_cdX8xkKj_s" target="_blank" rel="noopener" style="color:var(--blue)">watch?v=_cdX8xkKj_s</a> · <a href="https://www.youtube.com/watch?v=F5DXjhBqV9I" target="_blank" rel="noopener" style="color:var(--blue)">watch?v=F5DXjhBqV9I</a></p>
-  <ul style="margin-top:6px">
-    <li><strong>Access bundle 配置</strong>：可下拉选/新建的权限包（bundle ≈ profile），按用途命名。</li>
-    <li><strong>GitHub 深度集成</strong>：查 Issue、总结进度、审查并合并 PR。</li>
-    <li><strong>记忆靠后台 .md 文件</strong>、Google Workspace 联动（Gmail 发报告/建 Meet/存 Drive）。</li>
-  </ul>
-  <p style="font-size:12.5px;color:var(--ink3);margin-top:6px">以上第三方演示可信度高于营销页但非官方口径，实现细节以官方文档为准。</p>
+  <span class="tag t-amber">第三方实测（YouTube: F5DXjhBqV9I / _cdX8xkKj_s，非官方）</span>
+  <p style="margin-top:4px;font-size:12.5px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=F5DXjhBqV9I" target="_blank" rel="noopener" style="color:var(--blue)">《Claude Tag + Slack Will Change How You Work Forever》</a> · <a href="https://www.youtube.com/watch?v=_cdX8xkKj_s" target="_blank" rel="noopener" style="color:var(--blue)">watch?v=_cdX8xkKj_s</a>（下列截图取自视频；原图分辨率有限，仅作示意。记忆/知识库导入详见第 4.2 节）</p>
+
+  <h4 style="margin-top:16px">① 在 Slack 直接调用 Claude 高级功能（<a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=73" target="_blank" rel="noopener" style="color:var(--blue)">01:13</a>）</h4>
+  <p style="font-size:14px;color:var(--ink2)">像在 Claude Code 里一样用技能/插件/连接器。案例：构思 YouTube 标题时调用"标题构思"技能，分析过往视频转录、给出新标题与开场钩子。</p>
+  <div class="figrow">
+    <figure><img src="img/tp-title-ideation-ask.png" alt="调用标题构思技能"><figcaption>群内 @Claude，让它用"标题构思"技能出主意。</figcaption></figure>
+    <figure><img src="img/tp-title-ideation-result.png" alt="标题构思结果"><figcaption>拉取两条转录、跑技能、产出标题 + 开场钩子的清单。</figcaption></figure>
+  </div>
+
+  <h4 style="margin-top:20px">② 团队 AI 协作（多人模式，<a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=120" target="_blank" rel="noopener" style="color:var(--blue)">02:00</a>）</h4>
+  <p style="font-size:14px;color:var(--ink2)">打破单人使用 AI 的信息孤岛：同一频道里全员共同与 AI 交互、随时补想法，非技术员工也能"看别人怎么用"来学习。（无独立截图，属交互模式）</p>
+
+  <h4 style="margin-top:20px">③ 部署频道专属定制智能体（<a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=180" target="_blank" rel="noopener" style="color:var(--blue)">03:00</a>）</h4>
+  <p style="font-size:14px;color:var(--ink2)">给特定频道配预设工作流的智能体、分发全公司，降低提示词门槛。案例：营销频道部署接了 YouTube 技能的 Agent，一句话就把最新视频改写成 LinkedIn 帖。</p>
+  <div class="figrow">
+    <figure><img src="img/tp-marketing-agent-ask.png" alt="营销 Agent 指令"><figcaption>"把最新 YouTube 视频改写成 LinkedIn 帖"。</figcaption></figure>
+    <figure><img src="img/tp-marketing-agent-result.png" alt="营销 Agent 结果"><figcaption>自动取最新视频、拉转录、跑 LinkedIn writer 技能出稿。</figcaption></figure>
+  </div>
+
+  <h4 style="margin-top:20px">④ Access bundle（权限包 / 预设智能体）配置</h4>
+  <p style="font-size:14px;color:var(--ink2)">bundle 是可下拉选/新建的权限包（bundle ≈ profile），按用途命名；每个包内含 Credentials / Repositories / Domains / Plugins / Instructions 五类配置——即"这个身份能用什么 + 怎么行为"。</p>
+  <div class="figrow">
+    <figure><img src="img/tp-bundle-list.png" alt="Access bundle 列表"><figcaption>下拉：AI OS Meetings / Lead Researcher / Marketing 等 + 新建。</figcaption></figure>
+    <figure><img src="img/tp-bundle-instructions.png" alt="bundle 的 Instructions"><figcaption>Instructions 页：写这个 bundle 生效时的 system prompt（人格/行为）。</figcaption></figure>
+    <figure><img src="img/tp-bundle-plugins.png" alt="bundle 的 Plugins"><figcaption>Plugins 页：勾选该身份可用的插件（如自建 benai-suite）。</figcaption></figure>
+  </div>
+
+  <h4 style="margin-top:20px">⑤ GitHub 深度集成（插件库 / 知识库同步，<a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=627" target="_blank" rel="noopener" style="color:var(--blue)">10:27</a>）</h4>
+  <p style="font-size:14px;color:var(--ink2)">官方仅内置默认插件；<strong>自定义技能/插件库需在 GitHub 建仓库、在 bundle 的 Repositories 页深度连接</strong>。同一机制也用来把 GitHub 当企业"第二大脑"存储库接入，实现跨 AI 工具的知识库同步。</p>
+  <div class="figsingle"><img src="img/tp-bundle-repos.png" alt="bundle 授权 GitHub 组织仓库"><figcaption>Repositories 页：给 Claude 授权组织仓库（BenAIOS，含 benai-os-main / benai-skills-main）。</figcaption></div>
+
+  <p style="font-size:12.5px;color:var(--ink3);margin-top:10px">以上第三方演示可信度高于营销页但非官方口径，实现细节以官方文档为准。</p>
 </div>
 
 <h2><span class="n">3</span>核心功能与运转逻辑</h2>
