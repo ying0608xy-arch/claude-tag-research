@@ -190,13 +190,23 @@
   </ul>
 </div>
 <div class="card">
-  <span class="tag t-purple">官方演示视频（YouTube: VojDzHaciKQ）</span>
-  <p style="margin-top:4px;font-size:12.5px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=VojDzHaciKQ" target="_blank" rel="noopener" style="color:var(--blue)">youtube.com/watch?v=VojDzHaciKQ</a></p>
-  <ul style="margin-top:6px">
-    <li><strong>自主开发闭环（00:53）</strong>：工程群讨论紧急功能 → @Claude 定位代码库 → 写码 → 开 PR 并落地。</li>
-    <li><strong>跨部门记忆联动（01:17）</strong>：推代码后自动意识到"影响市场发布计划"，跨频道协助市场改材料。</li>
-    <li><strong>权限隔离反例（01:45）</strong>：法务频道要它改代码，因无权限直接拒绝执行。</li>
-  </ul>
+  <span class="tag t-purple">官方演示视频（YouTube: VojDzHaciKQ）——三个典型场景</span>
+  <p style="margin-top:4px;font-size:12.5px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=VojDzHaciKQ" target="_blank" rel="noopener" style="color:var(--blue)">youtube.com/watch?v=VojDzHaciKQ</a>（截图取自该视频）</p>
+
+  <h4 style="margin-top:16px">场景一 · 软件工程开发与代码 PR 自动提交（<a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=38" target="_blank" rel="noopener" style="color:var(--blue)">00:38</a>）</h4>
+  <p style="font-size:14px;color:var(--ink2)">工程群讨论销售急需的"定时导出"功能时直接 @Claude，它据频道上下文实时跟进多人的产品决策（甚至中途从"per-user"改为"workspace 级"重新规划），定位代码库、开 PR、完成修改并合并。Anthropic 内部 <strong>65% 产品 PR 由 Claude 开启</strong>。</p>
+  <div class="figrow">
+    <figure><img src="img/off-pr-discuss.png" alt="工程群讨论并 @Claude 建 PR"><figcaption>群内讨论需求 → @Claude 接手，随决策变化重新规划。</figcaption></figure>
+    <figure><img src="img/off-pr-merged.png" alt="PR #4131 合并"><figcaption>PR #4131 通过、团队 LGTM，Claude 直接合并。</figcaption></figure>
+  </div>
+
+  <h4 style="margin-top:20px">场景二 · 跨团队无缝协作与文档自动编辑（<a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=77" target="_blank" rel="noopener" style="color:var(--blue)">01:17</a>）</h4>
+  <p style="font-size:14px;color:var(--ink2)">凭长期记忆理解跨团队联动：它知道刚合并的功能会影响营销发布计划，于是在 #launch 频道主动提醒，并<strong>无需人工打开 Google Drive</strong> 就自主把博客草稿、beta 邀请邮件、功能表都更新到位——压缩了典型的跨部门沟通延迟。</p>
+  <div class="figsingle"><img src="img/off-crossteam-doc.png" alt="Claude 跨频道主动更新发布材料"><figcaption>#launch 里主动提醒 + 一次性更新 blog / 功能表 / beta 邀请邮件。</figcaption></div>
+
+  <h4 style="margin-top:20px">场景三 · 法务合同处理与基于频道的严格权限隔离（<a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=99" target="_blank" rel="noopener" style="color:var(--blue)">01:39</a>）</h4>
+  <p style="font-size:14px;color:var(--ink2)">Claude 有独立账号 + 按团队/频道的权限（per-team, per-channel）。#legal 能看合同、#eng 能改代码库；<strong>在 #legal 要它改代码则无法执行</strong>——权限边界清晰，保障不同业务场景的数据与操作安全。</p>
+  <div class="figsingle"><img src="img/off-perm-isolation.png" alt="按频道的权限隔离示意"><figcaption>#legal → Contracts、#eng → Codebase，权限跟频道走、互不越界。</figcaption></div>
 </div>
 <div class="card">
   <span class="tag t-amber">第三方实测（YouTube，非官方）</span>
