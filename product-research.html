@@ -68,11 +68,13 @@
   .prio{font-size:11px;font-weight:700;padding:2px 9px;border-radius:5px;letter-spacing:.03em}
   .prio.p0{background:var(--red-bg);color:var(--red)} .prio.p1{background:var(--amber-bg);color:var(--amber)} .prio.p2{background:var(--teal-bg);color:var(--teal)}
   .footnote{font-size:12.5px;color:var(--ink3);margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
-  .tldr{background:var(--ink);color:#f5f3ee;border-radius:16px;padding:28px 30px;margin:8px 0 10px}
-  .tldr h2{color:#fff;margin:0 0 14px;font-size:19px}
-  .tldr h2 .n{color:#fff;border-color:#fff}
-  .tldr p,.tldr li{color:#d9d6cf}
-  .tldr strong{color:#fff}
+  .tldr{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 28px;margin:8px 0 10px}
+  .tldr h2{color:var(--ink);margin:0 0 16px;font-size:19px}
+  .tldr-rows{display:flex;flex-direction:column;gap:12px}
+  .tldr-row{display:flex;align-items:baseline;gap:14px}
+  .tldr-k{flex:0 0 76px;font-size:13px;font-weight:700;color:var(--blue);background:var(--blue-bg);border-radius:7px;padding:5px 10px;text-align:center}
+  .tldr-v{font-size:15.5px;color:var(--ink);line-height:1.6}
+  .tldr-v strong{color:var(--ink);font-weight:700}
   .badge{font-size:11px;color:var(--ink3);font-weight:400;border:1px solid var(--line2);border-radius:5px;padding:1px 6px;margin-left:6px}
   .figrow{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
   .figrow figure{flex:1;min-width:220px;margin:0}
@@ -125,15 +127,11 @@
 
 <div class="tldr">
   <h2><span class="n">!</span>一页速览</h2>
-  <ul style="margin-left:2px">
-    <li><strong>是什么</strong>：`@Claude` 进 Slack 频道派活，它拆解任务、调用被授权的工具、在 thread 回帖——一个<strong>全频道共享、持续记忆、能主动补位、可异步跨天推进</strong>的 AI 同事。本质是「把 Claude Code 的全部能力整体搬进 Slack」+ 多人共享 + 主动性。</li>
-    <li><strong>定位（§1）</strong>：从"最强对话模型"升级为"<strong>团队 AI 协作基础设施</strong>"；Karpathy 称之为"LLM UIUX 的第三次重大重设计"。四个核心优势：<strong>共享 / 持续记忆 / 主动 / 异步</strong>。</li>
-    <li><strong>典型场景（§2）</strong>：工程（讨论功能→定位代码库→开 PR，内部 65% PR 由它开启）· 数据/GTM（catch up、跑数、销售线索自动背调）· 跨团队协作。均有官方演示与第三方实测截图佐证。</li>
-    <li><strong>怎么运转（§3）</strong>：功能一览（@派活 / 工具接入 / 频道级权限 / 两层记忆 / 主动 routine / DM / 治理）+ 一次任务的<strong>五步循环</strong>（唤醒式：线程持久、沙箱按需构建释放、Agent Proxy 边界注入凭证）。</li>
-    <li><strong>两个亮点（§4）</strong>：① <strong>主动回复</strong>——routine 驱动的"唤醒式主动"，人圈边界、模型判断该不该发声（前摄回复 / 事件自动工作流 / 定时任务三形态）；② <strong>团队共建知识库</strong>——管理员 ZIP·GitHub 打底 + 全员日常自动进化、可视化治理的"第二大脑"。</li>
-    <li><strong>工作流的根本改变（§5）</strong>：AI 从"个人私有助手"变成"团队公共成员"，把"重复交代背景 / 跨人跨部门传话"的协调成本压到最低。</li>
-    <li><strong>对元宝派的启示（§6）</strong>：元宝派 = Claude Tag 的"可靠底座" + Discord 的"多 Bot 自由"；头号短板是<strong>打通"派级记忆总线"</strong>（官方元宝 Bot 派记忆当前对自建 Bot 不可见）。<span style="color:var(--ink3)">（该章为 AI 基于调研的推演建议）</span></li>
-  </ul>
+  <div class="tldr-rows">
+    <div class="tldr-row"><span class="tldr-k">是什么</span><span class="tldr-v"><strong>@Claude 派活的全频道共享 AI</strong>——在 Slack 频道里 @ 它派活，拆解任务、调工具、回帖，全员可见。</span></div>
+    <div class="tldr-row"><span class="tldr-k">定位</span><span class="tldr-v">从<strong>个人助手 → 团队数字同事</strong>：有工作账号、持续记忆、能主动补位。</span></div>
+    <div class="tldr-row"><span class="tldr-k">最大亮点</span><span class="tldr-v"><strong>主动回复 + 团队共建知识库</strong>——不用 @ 也会在该出手时出手，越用越懂你的业务。</span></div>
+  </div>
 </div>
 
 <h2><span class="n">1</span>产品定位</h2>
