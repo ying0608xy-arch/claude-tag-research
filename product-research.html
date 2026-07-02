@@ -125,10 +125,13 @@
 <div class="tldr">
   <h2><span class="n">!</span>一页速览</h2>
   <ul style="margin-left:2px">
-    <li><strong>是什么</strong>：`@Claude` 进 Slack 频道派活，它拆解任务、调用被授权的工具、在 thread 回帖——一个<strong>全频道共享、持续记忆、能主动补位、可异步跨天推进</strong>的 AI 同事。</li>
-    <li><strong>定位</strong>：从"最强对话模型"升级为"<strong>团队 AI 协作基础设施</strong>"；Karpathy 称之为"LLM UIUX 的第三次重大重设计"。</li>
-    <li><strong>两个亮点</strong>：① <strong>主动回复</strong>——routine 驱动的"唤醒式主动"，人圈边界、模型判断该不该发声；② <strong>团队共建知识库</strong>——管理员打底 + 全员日常自动进化的"第二大脑"。</li>
-    <li><strong>对工作流的根本改变</strong>：AI 从"个人的私有助手"变成"团队的公共成员"，把"重复交代背景 / 跨人跨部门传话"的协调成本压到最低。</li>
+    <li><strong>是什么</strong>：`@Claude` 进 Slack 频道派活，它拆解任务、调用被授权的工具、在 thread 回帖——一个<strong>全频道共享、持续记忆、能主动补位、可异步跨天推进</strong>的 AI 同事。本质是「把 Claude Code 的全部能力整体搬进 Slack」+ 多人共享 + 主动性。</li>
+    <li><strong>定位（§1）</strong>：从"最强对话模型"升级为"<strong>团队 AI 协作基础设施</strong>"；Karpathy 称之为"LLM UIUX 的第三次重大重设计"。四个核心优势：<strong>共享 / 持续记忆 / 主动 / 异步</strong>。</li>
+    <li><strong>典型场景（§2）</strong>：工程（讨论功能→定位代码库→开 PR，内部 65% PR 由它开启）· 数据/GTM（catch up、跑数、销售线索自动背调）· 跨团队协作。均有官方演示与第三方实测截图佐证。</li>
+    <li><strong>怎么运转（§3）</strong>：功能一览（@派活 / 工具接入 / 频道级权限 / 两层记忆 / 主动 routine / DM / 治理）+ 一次任务的<strong>五步循环</strong>（唤醒式：线程持久、沙箱按需构建释放、Agent Proxy 边界注入凭证）。</li>
+    <li><strong>两个亮点（§4）</strong>：① <strong>主动回复</strong>——routine 驱动的"唤醒式主动"，人圈边界、模型判断该不该发声（前摄回复 / 事件自动工作流 / 定时任务三形态）；② <strong>团队共建知识库</strong>——管理员 ZIP·GitHub 打底 + 全员日常自动进化、可视化治理的"第二大脑"。</li>
+    <li><strong>工作流的根本改变（§5）</strong>：AI 从"个人私有助手"变成"团队公共成员"，把"重复交代背景 / 跨人跨部门传话"的协调成本压到最低。</li>
+    <li><strong>对元宝派的启示（§6）</strong>：元宝派 = Claude Tag 的"可靠底座" + Discord 的"多 Bot 自由"；头号短板是<strong>打通"派级记忆总线"</strong>（官方元宝 Bot 派记忆当前对自建 Bot 不可见）。<span style="color:var(--ink3)">（该章为 AI 基于调研的推演建议）</span></li>
   </ul>
 </div>
 
