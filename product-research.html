@@ -157,30 +157,17 @@
 
 <h2><span class="n">2</span>典型场景</h2>
 
-<h3>2.1 三类高频场景</h3>
-<div class="grid2">
-  <div class="card">
-    <span class="tag t-blue">工程 / 研发</span>
-    <ul>
-      <li><strong>事故一线响应</strong>：读故障报告、看失败截图，用 Datadog/Linear/GitHub 定位根因，常常直接<strong>起草修复 PR</strong>（CTO 原声称其为 "first responder"）</li>
-      <li><strong>自主开发闭环</strong>：讨论一个功能 → 定位代码库 → 写码 → 开 PR 并落地（官方视频演示）</li>
-      <li>Anthropic 内部：<strong>65% 产品 PR 合并</strong>由内部版开启</li>
-    </ul>
-  </div>
-  <div class="card">
-    <span class="tag t-teal">数据 / 运营 / GTM</span>
-    <ul>
-      <li><strong>Catch up</strong>：几秒钟从一条又长又乱的 thread 里提炼"决定了什么、还差什么、等谁拍板"</li>
-      <li><strong>Pull numbers</strong>：跑数、出报表</li>
-      <li><strong>销售线索研究</strong>：新预约进来自动抓客户 LinkedIn/官网，生成含"异议应对"的会议简报<span class="badge">第三方实测</span></li>
-      <li><strong>会议筹备</strong>：把"总掉链子的跟进"变成"自己运转的项目"</li>
-    </ul>
-  </div>
+<p class="lead">Claude Tag 覆盖<strong>工程/研发、数据运营/GTM、跨团队协作</strong>三大类场景。下面直接用两段视频里的真实画面来讲——<strong>官方演示三场景</strong>偏"团队协作全景"，<strong>第三方实测五场景</strong>偏"个人/团队实操细节"。</p>
+<div class="callout blue">
+  <div class="lbl">三类高频场景速记</div>
+  <strong>工程/研发</strong>：事故一线响应（读报告/看截图/Datadog·Linear·GitHub 定位根因、直接起草修复 PR，CTO 称 "first responder"）、自主开发闭环（讨论→定位代码库→写码→开 PR 落地）。Anthropic 内部 <strong>65% 产品 PR 由内部版开启</strong>。<br>
+  <strong>数据/运营/GTM</strong>：Catch up（长 thread 秒提炼"定了什么/差什么/等谁拍板"）、Pull numbers（跑数出表）、销售线索研究（新预约自动抓 LinkedIn/官网出会议简报）、会议筹备。<br>
+  <strong>跨团队协作</strong>：多人共享一个 AI、可接力、可围观学习。
 </div>
 
-<h3>2.2 场景佐证：官方与第三方素材</h3>
+<h3>2.1 官方演示：团队协作三场景</h3>
 <div class="card">
-  <span class="tag t-purple">官方演示视频（YouTube: VojDzHaciKQ）——三个典型场景</span>
+  <span class="tag t-purple">官方演示视频（YouTube: VojDzHaciKQ）</span>
   <p style="margin-top:4px;font-size:12.5px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=VojDzHaciKQ" target="_blank" rel="noopener" style="color:var(--blue)">youtube.com/watch?v=VojDzHaciKQ</a>（截图取自该视频）</p>
 
   <h4 style="margin-top:16px">场景一 · 软件工程开发与代码 PR 自动提交（<a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=38" target="_blank" rel="noopener" style="color:var(--blue)">00:38</a>）</h4>
@@ -198,6 +185,8 @@
   <p style="font-size:14px;color:var(--ink2)">Claude 有独立账号 + 按团队/频道的权限（per-team, per-channel）。#legal 能看合同、#eng 能改代码库；<strong>在 #legal 要它改代码则无法执行</strong>——权限边界清晰，保障不同业务场景的数据与操作安全。</p>
   <div class="figsingle"><img src="img/off-perm-isolation.png" alt="按频道的权限隔离示意"><figcaption>#legal → Contracts、#eng → Codebase，权限跟频道走、互不越界。</figcaption></div>
 </div>
+
+<h3>2.2 第三方实测：五类实操场景</h3>
 <div class="card">
   <span class="tag t-amber">第三方实测（YouTube: F5DXjhBqV9I / _cdX8xkKj_s，非官方）</span>
   <p style="margin-top:4px;font-size:12.5px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=F5DXjhBqV9I" target="_blank" rel="noopener" style="color:var(--blue)">《Claude Tag + Slack Will Change How You Work Forever》</a> · <a href="https://www.youtube.com/watch?v=_cdX8xkKj_s" target="_blank" rel="noopener" style="color:var(--blue)">watch?v=_cdX8xkKj_s</a>（下列截图取自视频；原图分辨率有限，仅作示意。记忆/知识库导入详见第 4.2 节）</p>
@@ -236,18 +225,20 @@
 
 <h2><span class="n">3</span>核心功能与运转逻辑</h2>
 
-<h3>3.1 核心功能清单（有什么）</h3>
+<h3>3.1 核心功能一览（能力 × 支撑场景 × 是否亮点）</h3>
+<p>一张表看清 Claude Tag 有哪些能力、各自撑起第 2 章哪类场景、以及哪些是第 4 章要深挖的亮点。<span style="color:var(--coral);font-weight:600">★</span> = 亮点能力。</p>
 <table>
-  <thead><tr><th style="width:150px">功能</th><th>做什么</th></tr></thead>
+  <thead><tr><th style="width:130px">能力</th><th>一句话</th><th style="width:150px">支撑的场景</th></tr></thead>
   <tbody>
-    <tr><td class="feat">@ 派活</td><td>频道/thread/私信里自然语言派活，拆阶段执行，thread 内贴实时执行清单</td></tr>
-    <tr><td class="feat">接外部工具</td><td>官方插件默认内置；<strong>自定义技能需先用 Claude Code 生成代码、在 GitHub 建自己的"技能市场"仓库、再后台绑定</strong>（不能直接在下拉里选）；外部连接器可接第三方（实测例：Apify 抓取 / Calendly 日程 / VidIQ）<span class="badge">部分第三方实测</span></td></tr>
-    <tr><td class="feat">身份与权限</td><td>频道内以服务账号身份行动；权限"跟频道走不跟人走"，管理员按 scope 配 Access bundle；<strong>可精确到频道级：能调哪些连接器/技能、以及是否能访问全局记忆</strong></td></tr>
-    <tr><td class="feat">持续记忆</td><td><strong>两层级：频道级 + 工作区级</strong>；主动记忆（自动记重要对话）+ 被动记忆（"记住这是 Ben 的账号"强制生成）；按 scope 分库、无组织级记忆</td></tr>
-    <tr><td class="feat">频道级指令</td><td>每个频道可设独立全局指令——不止"做什么"，也含<strong>行为/语气规则</strong>（如"此频道大家很忙，回答务必简明"）<span class="badge">第三方实测</span></td></tr>
-    <tr><td class="feat">主动 routine</td><td>定时任务 / 频道监听 / 订阅 PR（及业务事件），自然语言设定，全频道可见可关</td></tr>
-    <tr><td class="feat">私信 DM</td><td>用你个人账号的连接器，走个人席位额度，结果归属到你（与频道模式相反）</td></tr>
-    <tr><td class="feat">治理</td><td>组织/频道级 token 花费上限 + 全量操作审计 + 任务发起人可查</td></tr>
+    <tr><td class="feat">@ 派活 + 执行清单</td><td>自然语言派活、拆阶段执行、thread 内实时贴清单、全员可见可接力</td><td>工程开发 / Catch up</td></tr>
+    <tr><td class="feat">技能 · 插件 · 连接器</td><td>官方插件内置；自定义技能经 GitHub 建仓再绑定；连接器接 Datadog/Calendly/Apify 等</td><td>标题构思 / 线索研究 / 营销改写</td></tr>
+    <tr><td class="feat">身份与权限</td><td>服务账号身份、权限"跟频道走"、按 scope 配 Access bundle（含能否读全局记忆的开关）</td><td>法务/工程权限隔离</td></tr>
+    <tr><td class="feat"><span style="color:var(--coral)">★</span> 主动 routine</td><td>定时 / 频道监听 / 事件触发，自然语言设定、可见可关——"可控的主动"</td><td>销售自动背调 / 每日简报</td></tr>
+    <tr><td class="feat"><span style="color:var(--coral)">★</span> 持续记忆 · 第二大脑</td><td>频道级+工作区级记忆；ZIP/GitHub 导入知识库；可视化管理台</td><td>全员共享企业上下文</td></tr>
+    <tr><td class="feat">频道级指令</td><td>每个频道设独立行为/语气规则（如"回答务必简明"）</td><td>频道专属定制 Agent</td></tr>
+    <tr><td class="feat">多人协作</td><td>同一频道全员共享一个 AI、可接力、可围观学习</td><td>跨团队协作</td></tr>
+    <tr><td class="feat">私信 DM</td><td>用个人连接器、走个人额度、结果归属到你（与频道模式相反）</td><td>个人任务</td></tr>
+    <tr><td class="feat">治理</td><td>组织/频道级花费上限 + 全量审计 + 任务发起人可查</td><td>企业级管控</td></tr>
   </tbody>
 </table>
 
