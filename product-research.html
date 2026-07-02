@@ -74,8 +74,14 @@
   .tldr p,.tldr li{color:#d9d6cf}
   .tldr strong{color:#fff}
   .badge{font-size:11px;color:var(--ink3);font-weight:400;border:1px solid var(--line2);border-radius:5px;padding:1px 6px;margin-left:6px}
-  .draft{border:1.5px dashed var(--amber);background:var(--amber-bg)}
-  .draft .lbl{color:var(--amber);font-size:12px;font-weight:700;margin-bottom:8px}
+  .figrow{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+  .figrow figure{flex:1;min-width:220px;margin:0}
+  .figrow img,.figsingle img{width:100%;border:1px solid var(--line);border-radius:8px;display:block;background:var(--card)}
+  .figsingle{max-width:420px;margin:14px 0}
+  figcaption{font-size:12px;color:var(--ink3);margin-top:6px;line-height:1.5}
+  .disclaimer{border:1.5px dashed var(--amber);background:var(--amber-bg);border-radius:12px;padding:16px 20px;margin:16px 0}
+  .disclaimer .lbl{font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--amber);margin-bottom:6px}
+  .disclaimer p{margin:0;font-size:13.5px;color:#4a3a1a}
 
   #toc{position:fixed;top:0;left:0;width:248px;height:100vh;background:var(--card);border-right:1px solid var(--line);overflow-y:auto;padding:22px 14px 40px;transition:transform .25s ease;z-index:50}
   #toc .toc-title{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);padding:0 10px 12px;margin-bottom:4px;border-bottom:1px solid var(--line)}
@@ -104,9 +110,9 @@
 <header>
   <div class="kicker">产品调研 · Product Research</div>
   <h1>Claude Tag 产品调研<br>——住进 Slack 的共享 AI 同事</h1>
-  <p class="sub">Anthropic 把 Claude 从"你打开的对话框"变成"住在团队频道里的一名同事"。本报告拆解它的产品定位、功能运转逻辑、对工作流的改变，以及两个最值得深挖的亮点能力，并落到对元宝派的借鉴。</p>
+  <p class="sub">Anthropic 把 Claude 从"你打开的对话框"变成"住在团队频道里的一名同事"。本报告拆解它的产品定位、典型场景、核心功能与运转逻辑、两个亮点能力，以及对工作流的改变，并落到对元宝派的启示。</p>
   <div class="meta">
-    <span><i class="dot"></i>2026-07-01</span>
+    <span><i class="dot"></i>2026-07-02</span>
     <span>状态：Public Beta（Enterprise / Team，仅 Slack）</span>
     <span>底层模型：Opus 4.8</span>
   </div>
@@ -122,16 +128,36 @@
   </ul>
 </div>
 
-<h2><span class="n">1</span>产品场景、优势与核心定位</h2>
-
-<h3>1.1 核心定位：从"对话模型"到"团队协作基础设施"</h3>
+<h2><span class="n">1</span>产品定位</h2>
 <p class="lead">Claude Tag 的定位不是"更好用的聊天机器人"，而是把 AI 重新安放进团队的位置——<strong>一个有工作账号、有持续记忆、被全频道共享、能主动干活的数字同事</strong>。换个更技术的角度说，它是<strong>「把 Claude Code 的全部能力（Skills / plugins / connectors / Memory / 任务调度）整体搬进 Slack」</strong>，再叠加多人共享与主动性。它取代旧的「Claude in Slack」（旧版仅一对一、只看最近 20 条消息），2026-08-03 退役。</p>
 <div class="callout blue">
   <div class="lbl">Karpathy 的判断</div>
   「LLM UIUX 的第三次重大重新设计」——第一次是网站（你去访问），第二次是本地应用（下载到电脑），<strong>第三次是独立、持久、异步、拥有组织级工具和上下文、并能与团队协作的实体</strong>。Claude Tag 就是这第三形态的落地。
 </div>
 
-<h3>1.2 典型产品场景</h3>
+<h3>1.1 四个核心优势（定位为什么成立）</h3>
+<div class="grid2">
+  <div class="card">
+    <h4>① 共享（Shared）</h4>
+    <p style="font-size:14px;color:var(--ink2)">同一频道只有一个 Claude，全员同一身份。每个人都看得到它在做什么，能接力上一个人的对话——像共事，不是私聊。也顺带把非技术员工的使用门槛降到最低。</p>
+  </div>
+  <div class="card">
+    <h4>② 持续记忆（Persistent）</h4>
+    <p style="font-size:14px;color:var(--ink2)">长期参与频道会积累隐性上下文，不用每次从零解释背景；获授权后可跨频道、跨数据源学习。对比旧版只看最近 20 条。</p>
+  </div>
+  <div class="card">
+    <h4>③ 主动（Proactive / Ambient）</h4>
+    <p style="font-size:14px;color:var(--ink2)">设一次常驻规则，它就能不被 @ 也主动跟进、补位、提醒——但主动被规则圈定，可控可关（详见第 4 节）。</p>
+  </div>
+  <div class="card">
+    <h4>④ 异步（Async）</h4>
+    <p style="font-size:14px;color:var(--ink2)">派完活你去忙别的；它能给自己排后续任务，跨小时甚至跨天持续推进项目。Anthropic 内部"并行委派多个 Claude"已多于亲自执行。</p>
+  </div>
+</div>
+
+<h2><span class="n">2</span>典型场景</h2>
+
+<h3>2.1 三类高频场景</h3>
 <div class="grid2">
   <div class="card">
     <span class="tag t-blue">工程 / 研发</span>
@@ -152,39 +178,37 @@
   </div>
 </div>
 
-<h3>1.3 四个核心优势</h3>
-<div class="grid2">
-  <div class="card">
-    <h4>① 共享（Shared）</h4>
-    <p style="font-size:14px;color:var(--ink2)">同一频道只有一个 Claude，全员同一身份。每个人都看得到它在做什么，能接力上一个人的对话——像共事，不是私聊。也顺带把非技术员工的使用门槛降到最低。</p>
-  </div>
-  <div class="card">
-    <h4>② 持续记忆（Persistent）</h4>
-    <p style="font-size:14px;color:var(--ink2)">长期参与频道会积累隐性上下文，不用每次从零解释背景；获授权后可跨频道、跨数据源学习。对比旧版只看最近 20 条。</p>
-  </div>
-  <div class="card">
-    <h4>③ 主动（Proactive / Ambient）</h4>
-    <p style="font-size:14px;color:var(--ink2)">设一次常驻规则，它就能不被 @ 也主动跟进、补位、提醒——但主动被规则圈定，可控可关（详见第 3 节）。</p>
-  </div>
-  <div class="card">
-    <h4>④ 异步（Async）</h4>
-    <p style="font-size:14px;color:var(--ink2)">派完活你去忙别的；它能给自己排后续任务，跨小时甚至跨天持续推进项目。Anthropic 内部"并行委派多个 Claude"已多于亲自执行。</p>
-  </div>
-</div>
-
-<h2><span class="n">2</span>核心功能点、运转逻辑与对工作流的影响</h2>
-
-<h3>2.1 一次任务的运转逻辑（五步循环）</h3>
-<p>无论是被人 @ 还是被 routine 唤醒，都走同一个循环。关键是<strong>「线程持久、沙箱按需构建/释放」</strong>——它不是常驻进程实时盯着你，而是被唤醒 → 起临时沙箱干活 → 跑完即休眠。</p>
+<h3>2.2 场景佐证：官方与第三方素材</h3>
 <div class="card">
-  <div class="step"><div class="num">1</div><div class="body"><h4>会话开始</h4><p style="margin:0;font-size:14px;color:var(--ink2)">有人 @Claude，或一条 routine 到点/被事件触发。人触发与调度触发等价。</p></div></div>
-  <div class="step"><div class="num">2</div><div class="body"><h4>构建临时沙箱</h4><p style="margin:0;font-size:14px;color:var(--ink2)">Anthropic 托管的隔离环境，一个 thread 一个；读文件、写文档、跑代码都在里面。<strong>凭证不进沙箱。</strong></p></div></div>
-  <div class="step"><div class="num">3</div><div class="body"><h4>过 Agent Proxy 调用工具</h4><p style="margin:0;font-size:14px;color:var(--ink2)">需要外部系统时，请求过边界代理，按该频道 scope 的规则注入凭证或拦截（默认 deny）。</p></div></div>
-  <div class="step"><div class="num">4</div><div class="body"><h4>以服务账号身份行动</h4><p style="margin:0;font-size:14px;color:var(--ink2)">在 GitHub/数仓等以它自己的服务账号行事，动作进各系统审计日志。</p></div></div>
-  <div class="step"><div class="num">5</div><div class="body"><h4>回帖 + 沙箱释放</h4><p style="margin:0;font-size:14px;color:var(--ink2)">在 thread 贴执行清单与结果（全频道可见）；空闲后沙箱释放，下条消息再重建。</p></div></div>
+  <span class="tag t-coral">官方主打场景与客户原声（产品页）</span>
+  <p style="margin-top:4px">Slogan：<em>"@Claude reads threads, understands the full context, and reacts in real time so your team moves forward together."</em> 主打四类活：<strong>Catch up · Pull numbers · Draft PRs · Monitor channels</strong>。</p>
+  <ul style="margin-top:8px">
+    <li><strong>故障一线（CTO 原声）</strong>："Claude Tag is our first responder for internal bugs… uses Datadog, Linear, GitHub to trace root cause, and often draft a fix PR."</li>
+    <li><strong>非工程场景</strong>：把"一个夏天的会议筹备——总掉链子的跟进"变成"自己运转的项目"。</li>
+    <li><strong>入口卡位（Gusto）</strong>："Slack is the entry point for everything… Claude Tag is native there is huge."</li>
+  </ul>
+</div>
+<div class="card">
+  <span class="tag t-purple">官方演示视频（YouTube: VojDzHaciKQ）</span>
+  <ul style="margin-top:6px">
+    <li><strong>自主开发闭环（00:53）</strong>：工程群讨论紧急功能 → @Claude 定位代码库 → 写码 → 开 PR 并落地。</li>
+    <li><strong>跨部门记忆联动（01:17）</strong>：推代码后自动意识到"影响市场发布计划"，跨频道协助市场改材料。</li>
+    <li><strong>权限隔离反例（01:45）</strong>：法务频道要它改代码，因无权限直接拒绝执行。</li>
+  </ul>
+</div>
+<div class="card">
+  <span class="tag t-amber">第三方实测（YouTube: _cdX8xkKj_s / F5DXjhBqV9I，非官方）</span>
+  <ul style="margin-top:6px">
+    <li><strong>Access bundle 配置</strong>：可下拉选/新建的权限包（bundle ≈ profile），按用途命名。</li>
+    <li><strong>GitHub 深度集成</strong>：查 Issue、总结进度、审查并合并 PR。</li>
+    <li><strong>记忆靠后台 .md 文件</strong>、Google Workspace 联动（Gmail 发报告/建 Meet/存 Drive）。</li>
+  </ul>
+  <p style="font-size:12.5px;color:var(--ink3);margin-top:6px">以上第三方演示可信度高于营销页但非官方口径，实现细节以官方文档为准。</p>
 </div>
 
-<h3>2.2 核心功能清单</h3>
+<h2><span class="n">3</span>核心功能与运转逻辑</h2>
+
+<h3>3.1 核心功能清单（有什么）</h3>
 <table>
   <thead><tr><th style="width:150px">功能</th><th>做什么</th></tr></thead>
   <tbody>
@@ -199,7 +223,109 @@
   </tbody>
 </table>
 
-<h3>2.3 对现有工作流的三个根本改变</h3>
+<h3>3.2 一次任务怎么跑（五步循环）</h3>
+<p>无论是被人 @ 还是被 routine 唤醒，都走同一个循环。关键是<strong>「线程持久、沙箱按需构建/释放」</strong>——它不是常驻进程实时盯着你，而是被唤醒 → 起临时沙箱干活 → 跑完即休眠。</p>
+<div class="card">
+  <div class="step"><div class="num">1</div><div class="body"><h4>会话开始</h4><p style="margin:0;font-size:14px;color:var(--ink2)">有人 @Claude，或一条 routine 到点/被事件触发。人触发与调度触发等价。</p></div></div>
+  <div class="step"><div class="num">2</div><div class="body"><h4>构建临时沙箱</h4><p style="margin:0;font-size:14px;color:var(--ink2)">Anthropic 托管的隔离环境，一个 thread 一个；读文件、写文档、跑代码都在里面。<strong>凭证不进沙箱。</strong></p></div></div>
+  <div class="step"><div class="num">3</div><div class="body"><h4>过 Agent Proxy 调用工具</h4><p style="margin:0;font-size:14px;color:var(--ink2)">需要外部系统时，请求过边界代理，按该频道 scope 的规则注入凭证或拦截（默认 deny）。</p></div></div>
+  <div class="step"><div class="num">4</div><div class="body"><h4>以服务账号身份行动</h4><p style="margin:0;font-size:14px;color:var(--ink2)">在 GitHub/数仓等以它自己的服务账号行事，动作进各系统审计日志。</p></div></div>
+  <div class="step"><div class="num">5</div><div class="body"><h4>回帖 + 沙箱释放</h4><p style="margin:0;font-size:14px;color:var(--ink2)">在 thread 贴执行清单与结果（全频道可见）；空闲后沙箱释放，下条消息再重建。</p></div></div>
+</div>
+
+<h2><span class="n">4</span>亮点能力深挖</h2>
+
+<h3>4.1 亮点一：主动回复（Proactive / Ambient）</h3>
+<p class="lead">最被神化、也最值得看透的能力。本质是<strong>"人圈边界 + 模型判断"</strong>：用户用自然语言预立 routine → 触发源唤醒 → 模型在规则边界内判断"这条是否相关、值得发"，<strong>没有就跳过（该闭嘴就闭嘴）</strong>。</p>
+<div class="card">
+  <table style="margin:0;border:none">
+    <thead><tr><th style="width:170px">触发源</th><th style="width:130px">性质</th><th>例子</th></tr></thead>
+    <tbody>
+      <tr><td class="feat" style="width:170px">定时任务</td><td>回看式</td><td>"每天 9 点发过去 24 小时全公司业务摘要"</td></tr>
+      <tr><td class="feat" style="width:170px">频道监听</td><td>回看式</td><td>"盯这些频道，每天一次，有相关的才发，没有就跳过"</td></tr>
+      <tr><td class="feat" style="width:170px">订阅 PR / 业务事件</td><td>事件触发（近实时）</td><td>CI 完成/评审落地即报；销售频道新预约 → 自动研究客户 <span class="badge">第三方实测</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout amber">
+  <div class="lbl">一处需诚实标注的边界</div>
+  产品页宣称 "reacts in real time / reads the room / doesn't wait to be asked"，第三方实测也演示了"无唤醒词自动插话"；但官方技术文档落到实处只有<strong>定时/监听/事件</strong>三类 routine 的唤醒式机制。<strong>"频道新消息实时触发插话"官方未明确承诺</strong>——作对外表述时应区分"实测演示"与"官方保证"。<br>
+  <strong>产品价值提炼</strong>：它的高明不在"能主动"，而在"<strong>可控的主动</strong>"——需显式开启、管理员控频率、全频道可见可关，用制度约束把"AI 话痨"的风险摁住了。
+</div>
+
+<p style="margin-top:20px">主动性在实测里表现为三种递进的形态，改变的是同一件事：<strong>把 AI 从"被动触发的工具"变成"会自己找活干的数字员工"</strong>。下面三张为实测截图（原图分辨率有限，仅作示意）。</p>
+
+<div class="figrow">
+  <figure>
+    <img src="img/proactive-reply.png" alt="前摄性回复">
+    <figcaption><strong>形态一 · 前摄性回复</strong>：yt-production 频道讨论标题，未 @Claude，它主动给出标题建议。</figcaption>
+  </figure>
+  <figure>
+    <img src="img/proactive-lead-brief.png" alt="自动工作流">
+    <figcaption><strong>形态二 · 自动工作流</strong>：Calendly 推新预约 → Lead Researcher 自动搜客户 → 生成含异议应对的会议简报。</figcaption>
+  </figure>
+  <figure>
+    <img src="img/proactive-schedule-tasks.png" alt="定时任务">
+    <figcaption><strong>形态三 · 定时任务</strong>：自然语言设"每天 9 点发业务仪表盘"；亦可定时自我维护记忆库。</figcaption>
+  </figure>
+</div>
+
+<table>
+  <thead><tr><th style="width:130px">形态</th><th style="width:150px">一句话</th><th>要点</th></tr></thead>
+  <tbody>
+    <tr><td class="feat" style="width:130px">前摄性回复</td><td>会说话</td><td>感知上下文、能提供价值时主动介入，降低"向 AI 下指令"的摩擦。<strong>严谨标注</strong>：实测现象，机制大概率靠 watch 本频道 routine 支撑，是否纯实时官方未证实。</td></tr>
+    <tr><td class="feat" style="width:130px">自动工作流</td><td>会干活</td><td>事件驱动、零人工干预：条件满足即后台跑完整套流程。销售背调从"开会前手动 15–30 分钟"变成"会议一约简报已在手边"。</td></tr>
+    <tr><td class="feat" style="width:130px">定时任务</td><td>会自我调度</td><td>自然语言设周期任务，无需 Cron/Zapier；高阶用法可<strong>定时自我维护记忆库</strong>，让知识库复合增长。</td></tr>
+  </tbody>
+</table>
+<div class="callout teal">
+  <div class="lbl">三形态的递进关系</div>
+  会说话 → 会干活 → 会自我调度维护。三者叠加，才凑齐"数字员工"的完整画像。核心提醒：<strong>越往后越强，越要配"可控"</strong>——事件触发要防误触发、定时任务要可见可关、自动工作流要留人在环的审核点。
+</div>
+
+<h3>4.2 亮点二：团队共建知识库（第二大脑）</h3>
+<p class="lead">这是把"持续记忆"做成产品的关键。采用<strong>"管理员集中打底 + 全员日常自动进化"双轨制</strong>，让知识库从个人壁垒变成全员共享的企业上下文。<span class="badge">主要据第三方实测，实现细节以官方为准</span></p>
+<div class="grid2">
+  <div class="card">
+    <span class="tag t-amber">① 初始打底（手动灌）</span>
+    <ul>
+      <li><strong>ZIP 导入</strong>：本地知识库（如 Obsidian）打包成多个 ZIP，Slack 里发给 Claude，令其重构为记忆层</li>
+      <li><strong>GitHub 挂载</strong>：知识库放仓库、后台授权 repo，利于跨平台版本控制与频繁更新</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag t-teal">② 持续进化（自动 + 指令）</span>
+    <ul>
+      <li><strong>内置记忆层</strong>：自主记忆频道里的重要工作流/讨论，越用越懂</li>
+      <li><strong>对话级指令</strong>："以后都用这个口吻写文案"→ 当场生成永久记忆</li>
+      <li><strong>定时梳理</strong>：定期把近期讨论提炼进记忆层，保持最新</li>
+    </ul>
+  </div>
+</div>
+
+<div class="figrow">
+  <figure>
+    <img src="img/memory-zip-rebuild.png" alt="ZIP 重构为记忆树">
+    <figcaption><strong>方式一 · ZIP 导入</strong>：多个 zip + CLAUDE.md → 重构成<strong>带目录结构的记忆文件树</strong>（各文件夹带文件数），CLAUDE.md 做根配置、落到 channel scope。</figcaption>
+  </figure>
+  <figure>
+    <img src="img/github-auth.png" alt="GitHub 授权">
+    <figcaption><strong>方式二 · GitHub 挂载</strong>：在 Access bundle 的 Repositories 标签授权具体 repo（benai-os-main 等）。适合频繁更新、跨平台同步。</figcaption>
+  </figure>
+  <figure>
+    <img src="img/memory-admin.png" alt="记忆管理台">
+    <figcaption><strong>记忆可视化治理</strong>：后台管理台按 scope 分（各频道），文件树可逐个<strong>查看/编辑/删除</strong> .md（含 frontmatter）。</figcaption>
+  </figure>
+</div>
+
+<div class="callout teal">
+  <div class="lbl">三个产品洞察（据截图升级）</div>
+  ① <strong>记忆载体是带 frontmatter 的 .md 文件树，按 scope 分库、用 CLAUDE.md 做根配置</strong>——"越用越懂"不是玄学，难点不在存储，而在"写什么、何时更新、按 scope 隔离读写"。<br>
+  ② <strong>记忆是可视化可治理的资产</strong>：有专门的管理台，按 scope 分、逐文件可增删改——记忆不仅要能共享，还要能"被看见、被管理"。<br>
+  ③ 真正的价值是<strong>把"全公司第二大脑"部署给共享 Agent 后，非技术员工不做任何配置，也能拿到贴合公司实情的高质量输出</strong>——这才是"降低 AI 门槛"的真抓手。
+</div>
+
+<h2><span class="n">5</span>对现有工作流的三个根本改变</h2>
 <div class="grid3">
   <div class="card">
     <span class="tag t-purple">改变一</span>
@@ -222,90 +348,11 @@
   它把团队里那些<strong>"没人负责、总掉链子的接缝"</strong>——重复交代背景、跨人传话、被遗忘的 thread、下游影响没人跟——交给了一个记得住、看得全、能主动补位的公共成员。这才是"AI 同事"相对"AI 工具"的真正增量。
 </div>
 
-<h2><span class="n">3</span>亮点能力 Highlight</h2>
-
-<h3>3.1 亮点一：主动回复（Proactive / Ambient）</h3>
-<p class="lead">最被神化、也最值得看透的能力。本质是<strong>"人圈边界 + 模型判断"</strong>：用户用自然语言预立 routine → 触发源唤醒 → 模型在规则边界内判断"这条是否相关、值得发"，<strong>没有就跳过（该闭嘴就闭嘴）</strong>。</p>
-<div class="card">
-  <table style="margin:0;border:none">
-    <thead><tr><th style="width:170px">触发源</th><th style="width:130px">性质</th><th>例子</th></tr></thead>
-    <tbody>
-      <tr><td class="feat" style="width:170px">定时任务</td><td>回看式</td><td>"每天 9 点发过去 24 小时全公司业务摘要"</td></tr>
-      <tr><td class="feat" style="width:170px">频道监听</td><td>回看式</td><td>"盯这些频道，每天一次，有相关的才发，没有就跳过"</td></tr>
-      <tr><td class="feat" style="width:170px">订阅 PR / 业务事件</td><td>事件触发（近实时）</td><td>CI 完成/评审落地即报；销售频道新预约 → 自动研究客户 <span class="badge">第三方实测</span></td></tr>
-    </tbody>
-  </table>
+<h2><span class="n">6</span>对元宝派的启示</h2>
+<div class="disclaimer">
+  <div class="lbl">⚠ 内容来源说明</div>
+  <p>本章为 <strong>Claude（AI）基于上述 Claude Tag 调研自动推演的分析与建议</strong>，用于启发讨论，<strong>不代表报告作者本人的立场或已定产品决策</strong>。其中涉及元宝派现状的描述以当前已知信息为准，落地判断请结合业务实际二次校验。</p>
 </div>
-<div class="callout amber">
-  <div class="lbl">一处需诚实标注的边界</div>
-  产品页宣称 "reacts in real time / reads the room / doesn't wait to be asked"，第三方实测也演示了"无唤醒词自动插话"；但官方技术文档落到实处只有<strong>定时/监听/事件</strong>三类 routine 的唤醒式机制。<strong>"频道新消息实时触发插话"官方未明确承诺</strong>——作对外表述时应区分"实测演示"与"官方保证"。<br>
-  <strong>产品价值提炼</strong>：它的高明不在"能主动"，而在"<strong>可控的主动</strong>"——需显式开启、管理员控频率、全频道可见可关，用制度约束把"AI 话痨"的风险摁住了。
-</div>
-
-<p style="margin-top:20px">主动性在实测里表现为三种递进的形态。它们改变的是同一件事：<strong>把 AI 从"被动触发的工具"变成"会自己找活干的数字员工"</strong>。</p>
-
-<h4 style="margin-top:22px">形态一：前摄性回复——不必 @ 就参与讨论</h4>
-<p>AI 成为频道里的"隐形参与者"，感知对话上下文，在能提供价值时主动介入。实测场景：团队在 yt-production 频道讨论新视频标题，<strong>没有手动 @Claude</strong>，Claude 识别到这是头脑风暴、主动给出标题建议。业务价值：员工不必切换到"向 AI 下指令"的思维，降低使用摩擦。</p>
-<img src="img/proactive-reply.png" alt="团队讨论标题时 Claude 主动介入" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
-<div class="callout amber" style="margin:8px 0">
-  <div class="lbl">严谨标注</div>
-  以上为第三方实测<strong>现象</strong>。机制上，这种"主动介入"大概率由一条 <strong>watch 本频道的 routine</strong> 支撑（模型被唤醒后判断是否值得发言）；<strong>是否为"无任何配置、纯聊天内容实时触发"，官方文档未证实</strong>，对外表述应区分"实测演示"与"官方保证"。
-</div>
-
-<h4 style="margin-top:22px">形态二：自动工作流——事件驱动的零人工干预</h4>
-<p>管理员为频道设基于事件的自动触发条件，条件满足即在后台静默跑完整套预设工作流。实测场景（销售频道）：Calendly 在 #ai-os-meetings 推送"新客户预约"通知 → 潜伏的"Lead Researcher"Agent 被触发 → 自动调用连接器（Apify/Firecrawl 等）搜客户 LinkedIn 与公司官网 → 几秒内在频道生成<strong>会议准备简报（Call Prep Brief）</strong>，含公司/联系人总结、建议议程、<strong>客户可能提出的异议</strong>。业务价值：销售开会前 15–30 分钟的手动背调，变成"会议一约，专家级简报已在手边"。</p>
-<img src="img/proactive-lead-brief.png" alt="Calendly 新线索触发 Claude 自动生成会议简报" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
-
-<h4 style="margin-top:22px">形态三：定时任务——自然语言驱动的调度中心</h4>
-<p>无需写 Cron、无需 Zapier/Make，直接在聊天框用大白话设周期任务。实测场景："每天早上 9 点发一份每日简报，总结过去 24 小时全业务，以仪表盘形式交付" → Claude 每天准时抓 YouTube 数据、社区动态、需紧急处理的升级事件，汇成结构化面板。<strong>高阶用法</strong>：定时任务还能用来<strong>自我维护记忆库</strong>——定期把 Slack 新上下文结构化、更新进"第二大脑"，实现知识库自动复合增长。下图是 Claude 把"定时导出"需求主动拆成开发任务（workspace_schedules 表 / Cron dispatcher / 回填 job）的对话。</p>
-<img src="img/proactive-schedule-tasks.png" alt="Claude 把定时导出需求拆成开发任务" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
-
-<div class="callout teal">
-  <div class="lbl">三形态的递进关系</div>
-  前摄性回复（<strong>会说话</strong>）→ 自动工作流（<strong>会干活</strong>）→ 定时任务（<strong>会自我调度、自我维护</strong>）。三者叠加，才凑齐"数字员工"的完整画像。对国内的提醒依旧是那句：<strong>越往后越强，越要配"可控"</strong>——事件触发要防误触发、定时任务要可见可关、自动工作流要留人在环的审核点。
-</div>
-
-<h3>3.2 亮点二：团队共建知识库（第二大脑）</h3>
-<p class="lead">这是把"持续记忆"做成产品的关键。采用<strong>"管理员集中打底 + 全员日常自动进化"双轨制</strong>，让知识库从个人壁垒变成全员共享的企业上下文。<span class="badge">主要据第三方实测，实现细节以官方为准</span></p>
-<div class="grid2">
-  <div class="card">
-    <span class="tag t-amber">① 初始打底（手动灌）</span>
-    <ul>
-      <li><strong>ZIP 导入</strong>：本地知识库（如 Obsidian）打包成多个 ZIP，Slack 里发给 Claude，令其重构为记忆层</li>
-      <li><strong>GitHub 挂载</strong>：知识库放仓库、后台授权 repo，利于跨平台版本控制与频繁更新</li>
-    </ul>
-  </div>
-  <div class="card">
-    <span class="tag t-teal">② 持续进化（自动 + 指令）</span>
-    <ul>
-      <li><strong>内置记忆层</strong>：自主记忆频道里的重要工作流/讨论，越用越懂</li>
-      <li><strong>对话级指令</strong>："以后都用这个口吻写文案"→ 当场生成永久记忆</li>
-      <li><strong>定时梳理</strong>：定期把近期讨论提炼进记忆层，保持最新</li>
-    </ul>
-  </div>
-</div>
-
-<h4 style="margin-top:24px">方式一：ZIP 导入的真实链路（第三方实测截图）</h4>
-<p>用户 @Claude 上传多个 ZIP（Context / Daily / Projects / Resources / Youtube / Onboarding / Tasks / Intelligence）+ 一个 <code>CLAUDE.md</code>，指令"按图重构进本频道 memory"。Claude 回执显示：<strong>8 个 zip 解压进对应根文件夹（含各自文件数，如 Intelligence 1049 项）、CLAUDE.md 放在 memory 根并带真实 frontmatter <code>os-mode: business</code>、验证完整目录树无双层嵌套、全部落到 channel scope（<code>team/silo/channel/C09U0JF6B7Z/</code>）</strong>。</p>
-<img src="img/memory-zip-rebuild.png" alt="Claude 重构 ZIP 为频道记忆的回执" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
-<p style="font-size:13px;color:var(--ink3)">关键证据：记忆不是"一坨文本"，而是<strong>带目录结构的文件树 + CLAUDE.md 做根配置</strong>，且明确归属到 channel scope。</p>
-
-<h4 style="margin-top:24px">记忆是可视化、可治理的（后台管理台截图）</h4>
-<p>后台 <code>admin-settings/claude-tag/memory</code> 是一个完整的记忆管理台：左侧按 <strong>Scope（Slack / 各频道：ai-os-meetings、community-feed、marketing-claude…）</strong> 分，中间是记忆文件树（brand.md / icp.md / strategy.md / Daily 按日期…），右侧可<strong>查看 / 编辑 / 删除</strong>单个记忆文件（含 frontmatter）。</p>
-<img src="img/memory-admin.png" alt="Claude Tag 后台记忆管理台" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
-
-<h4 style="margin-top:24px">方式二：GitHub 挂载的真实链路（授权 UI 截图）</h4>
-<p>在 Access bundle 的 <strong>Repositories</strong> 标签里，给 Claude 授权访问组织的具体 repo（图中 BenAIOS 组织下的 <code>benai-os-main</code>、<code>benai-skills-main</code> 两个仓库）；同一弹窗还有 Credentials / Domains / Plugins / Instructions 标签。<strong>这种方式适合需要频繁更新、跨平台同步的团队</strong>——改仓库即更新记忆，天然带版本控制。</p>
-<img src="img/github-auth.png" alt="Claude Tag GitHub 仓库授权界面" style="width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0">
-
-<div class="callout teal">
-  <div class="lbl">三个产品洞察（据截图升级）</div>
-  ① <strong>记忆载体是带 frontmatter 的 .md 文件树，按 scope 分库、用 CLAUDE.md 做根配置</strong>——"越用越懂"不是玄学，难点不在存储，而在"写什么、何时更新、按 scope 隔离读写"。<br>
-  ② <strong>记忆是可视化可治理的资产</strong>：有专门的管理台，按 scope 分、逐文件可增删改——记忆不仅要能共享，还要能"被看见、被管理"。<br>
-  ③ 真正的价值是<strong>把"全公司第二大脑"部署给共享 Agent 后，非技术员工不做任何配置，也能拿到贴合公司实情的高质量输出</strong>——这才是"降低 AI 门槛"的真抓手。
-</div>
-
-<h2><span class="n">4</span>对元宝派的可借鉴意义</h2>
 <p class="lead">元宝派现状是<strong>「双轨 Bot」的多人 IM 场域</strong>：① <strong>官方元宝 Bot</strong>（建派默认自带，官方托管，<strong>记忆跟着派走</strong>）；② <strong>自建 Bot</strong>（用户可拉进派，权限/记忆由开发者或 C 端用户自定义）。这个形态很关键——它<strong>已经天然同时含有 Claude Tag 和 Discord 各自的一半基因</strong>：官方元宝 Bot 的"派级记忆"对齐 Claude Tag 的共享身份/持续记忆；自建 Bot 的"自管权限记忆"对齐 Discord 的开发者自建模型。</p>
 
 <div class="card">
@@ -343,8 +390,8 @@
   <p style="margin-top:8px">所以这不是"锦上添花的机会"，而是<strong>元宝派离"一个协作体"最远的一环、头号短板</strong>。关键动作：把官方元宝 Bot 的派级记忆<strong>抽象成一层"派级记忆总线 / 派上下文 API"</strong>，让自建 Bot 能<strong>按授权、受控地读（甚至写）</strong>这份共享上下文。做成了，元宝派就实现了连 Claude Tag 都没做到的事——<strong>多个异构 Bot 共享同一份派级记忆、可接力</strong>；这正是双轨模型能反超单一身份的支点。</p>
   <div class="callout amber" style="margin:12px 0 0">
     <div class="lbl">为什么它同时是 P0 短板和最大差异化</div>
-    Claude Tag 靠"只有一个身份"天然共享记忆（简单但没多 Bot）；元宝派要在"多个独立 Bot"之间共享记忆，<strong>难度更高，但一旦打通，价值也更高</strong>。这道题必须配套第 4 条的治理（谁能读、读多少、是否入审计）一起解——记忆开放和权限治理是同一枚硬币的两面。<br>
-    <strong>可借鉴的现成做法</strong>：Claude Tag 后台已经把"<strong>某频道/身份是否能访问全局记忆</strong>"做成了一个<strong>频道级权限开关</strong>，还配了一个<strong>按 scope 分、逐文件可增删改的记忆管理台</strong>（见第 3.2 节截图）。元宝派的"派级记忆总线"正该是这个思路——<strong>把"某个自建 Bot 能否读派记忆、读到哪层"做成可授权的开关，并给派主一个"派记忆可视化管理台"</strong>；记忆不只是能共享，还要能被看见、被治理。
+    Claude Tag 靠"只有一个身份"天然共享记忆（简单但没多 Bot）；元宝派要在"多个独立 Bot"之间共享记忆，<strong>难度更高，但一旦打通，价值也更高</strong>。这道题必须配套治理（谁能读、读多少、是否入审计）一起解——记忆开放和权限治理是同一枚硬币的两面。<br>
+    <strong>可借鉴的现成做法</strong>：Claude Tag 后台已经把"<strong>某频道/身份是否能访问全局记忆</strong>"做成了一个<strong>频道级权限开关</strong>，还配了一个<strong>按 scope 分、逐文件可增删改的记忆管理台</strong>（见第 4.2 节截图）。元宝派的"派级记忆总线"正该是这个思路——<strong>把"某个自建 Bot 能否读派记忆、读到哪层"做成可授权的开关，并给派主一个"派记忆可视化管理台"</strong>；记忆不只是能共享，还要能被看见、被治理。
   </div>
 </div>
 
@@ -374,13 +421,13 @@
 </div>
 
 <div class="callout teal">
-  <div class="lbl">一句话总纲（校准版）</div>
+  <div class="lbl">一句话总纲</div>
   Claude Tag = 单 AI 的<strong>可靠</strong>（官方托管、派级记忆、强治理，但没多 Bot）；Discord = 多 Bot 的<strong>自由</strong>（开发者自建，但记忆割裂、治理靠自己）。<strong>元宝派天生双轨，同时握有两者的一半——官方元宝 Bot 给"可靠底座"，自建 Bot 给"多 Bot 自由"。但两半目前是"焊缝断开"的：官方 Bot 的派级记忆自建 Bot 读不到。</strong>它的机会不是二选一，而是<strong>把这道焊缝焊上</strong>：以官方元宝 Bot 为派魂/记忆锚点，<strong>打通一层"派级记忆总线"</strong>受控开放给自建 Bot，配套双轨治理，才能真正做成"一支既灵活又靠谱的 AI 小队"。<strong>焊缝没焊上之前，元宝派只是"住在一起的一群陌生 Bot"，还不是"一支小队"。</strong>
 </div>
 
 <div class="footnote">
   <strong>资料来源</strong>：Anthropic 官方产品页 claude.com/product/tag · 官方文档 claude.com/docs/claude-tag（agent-identity / attach-to-scope / proactivity / how-it-works）· 官方演示视频 YouTube VojDzHaciKQ · 第三方实测视频 YouTube _cdX8xkKj_s、F5DXjhBqV9I（非官方，实现细节以官方文档为准）· 机器之心《一夜之间，Claude 成我同事了》(2026-06-24) · Computerworld。<br>
-  凡标注「第三方实测」的能力均来自博主演示，可信度高于营销页但非官方口径。本文为产品调研，第 4 节含产品建议与主观判断，仅供决策参考。
+  凡标注「第三方实测」的能力均来自博主演示，可信度高于营销页但非官方口径。第 6 节为 AI 基于调研的推演建议，非报告作者本人立场，仅供决策参考。
 </div>
 
 </div>
@@ -395,7 +442,7 @@
   wrap.querySelectorAll("h2, h3").forEach(function(h){
     var isH2=h.tagName==="H2";
     var isHi=false;
-    if(!isH2){ isHi=/^3\.[12]/.test(h.textContent.trim()); }
+    if(!isH2){ isHi=/^4\.[12]/.test(h.textContent.trim()); }
     if(!isH2 && !isHi) return;
     if(!h.id){ h.id="sec-"+(slug++); }
     heads.push({el:h, id:h.id, lvl:isH2?2:3, text:h.textContent.replace(/\s+/g," ").trim()});
