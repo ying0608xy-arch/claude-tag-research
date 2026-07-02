@@ -109,6 +109,10 @@
     body.toc-open #toc-toggle{left:264px}
   }
   code{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink)}
+  .shots{display:flex;flex-wrap:wrap;gap:5px}
+  .shots a{display:block;line-height:0}
+  .shots img{width:88px;height:52px;object-fit:cover;border:1px solid var(--line);border-radius:6px;transition:transform .12s,box-shadow .12s}
+  .shots img:hover{transform:scale(1.04);box-shadow:0 3px 10px rgba(0,0,0,.14)}
 </style>
 </head>
 <body>
@@ -168,24 +172,24 @@
 <h3>2.1 官方演示：团队协作三场景</h3>
 <p style="font-size:12.5px;color:var(--ink3);margin:-4px 0 8px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=VojDzHaciKQ" target="_blank" rel="noopener" style="color:var(--blue)">youtube.com/watch?v=VojDzHaciKQ</a></p>
 <table>
-  <thead><tr><th style="width:150px">场景</th><th>一句话说明</th><th style="width:64px">片段</th></tr></thead>
+  <thead><tr><th style="width:132px">场景</th><th>一句话说明</th><th style="width:190px">截图</th><th style="width:54px">片段</th></tr></thead>
   <tbody>
-    <tr><td class="feat">工程 · PR 自动提交</td><td>工程群 @Claude 讨论"定时导出"功能，它随决策变化重新规划、定位代码库、开 PR 并合并。<strong>内部 65% 产品 PR 由 Claude 开启</strong>。</td><td><a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=38" target="_blank" rel="noopener" style="color:var(--blue)">00:38</a></td></tr>
-    <tr><td class="feat">跨团队 · 文档自动编辑</td><td>凭长期记忆判断"新功能影响营销发布"，在 #launch 主动提醒，并自动更新博客/邀请邮件/功能表，<strong>无需人工开 Drive</strong>。</td><td><a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=77" target="_blank" rel="noopener" style="color:var(--blue)">01:17</a></td></tr>
-    <tr><td class="feat">法务 · 频道权限隔离</td><td>独立账号 + per-channel 权限：#legal 看合同、#eng 改代码；在 #legal 要它改代码则被拒——边界清晰保安全。</td><td><a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=99" target="_blank" rel="noopener" style="color:var(--blue)">01:39</a></td></tr>
+    <tr><td class="feat">工程 · PR 自动提交</td><td>工程群 @Claude 讨论"定时导出"功能，它随决策变化重新规划、定位代码库、开 PR 并合并。<strong>内部 65% 产品 PR 由 Claude 开启</strong>。</td><td><div class="shots"><a href="img/off-pr-discuss.png" target="_blank"><img src="img/off-pr-discuss.png" alt="讨论并@Claude建PR"></a><a href="img/off-pr-merged.png" target="_blank"><img src="img/off-pr-merged.png" alt="PR #4131 合并"></a></div></td><td><a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=38" target="_blank" rel="noopener" style="color:var(--blue)">00:38</a></td></tr>
+    <tr><td class="feat">跨团队 · 文档自动编辑</td><td>凭长期记忆判断"新功能影响营销发布"，在 #launch 主动提醒，并自动更新博客/邀请邮件/功能表，<strong>无需人工开 Drive</strong>。</td><td><div class="shots"><a href="img/off-crossteam-doc.png" target="_blank"><img src="img/off-crossteam-doc.png" alt="跨频道主动更新发布材料"></a></div></td><td><a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=77" target="_blank" rel="noopener" style="color:var(--blue)">01:17</a></td></tr>
+    <tr><td class="feat">法务 · 频道权限隔离</td><td>独立账号 + per-channel 权限：#legal 看合同、#eng 改代码；在 #legal 要它改代码则被拒——边界清晰保安全。</td><td><div class="shots"><a href="img/off-perm-isolation.png" target="_blank"><img src="img/off-perm-isolation.png" alt="按频道的权限隔离示意"></a></div></td><td><a href="https://www.youtube.com/watch?v=VojDzHaciKQ&t=99" target="_blank" rel="noopener" style="color:var(--blue)">01:39</a></td></tr>
   </tbody>
 </table>
 
 <h3>2.2 第三方实测：五类实操场景 <span class="badge">非官方</span></h3>
 <p style="font-size:12.5px;color:var(--ink3);margin:-4px 0 8px"><strong>来源</strong>：<a href="https://www.youtube.com/watch?v=F5DXjhBqV9I" target="_blank" rel="noopener" style="color:var(--blue)">《Claude Tag + Slack…》</a> · <a href="https://www.youtube.com/watch?v=_cdX8xkKj_s" target="_blank" rel="noopener" style="color:var(--blue)">watch?v=_cdX8xkKj_s</a>（可信度高于营销页但非官方口径，实现细节以官方文档为准）</p>
 <table>
-  <thead><tr><th style="width:150px">场景</th><th>一句话说明</th><th style="width:64px">片段</th></tr></thead>
+  <thead><tr><th style="width:132px">场景</th><th>一句话说明</th><th style="width:190px">截图</th><th style="width:54px">片段</th></tr></thead>
   <tbody>
-    <tr><td class="feat">调用高级功能</td><td>像在 Claude Code 里一样用技能/插件/连接器。例：调"标题构思"技能，读过往视频转录出新标题与钩子。</td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=73" target="_blank" rel="noopener" style="color:var(--blue)">01:13</a></td></tr>
-    <tr><td class="feat">多人协作模式</td><td>打破单人用 AI 的信息孤岛：全员在同一频道共同交互、随时补想法，非技术员工"看别人用"即可上手。</td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=120" target="_blank" rel="noopener" style="color:var(--blue)">02:00</a></td></tr>
-    <tr><td class="feat">频道专属定制 Agent</td><td>给频道绑定预设工作流的智能体（频道↔Access bundle）。例：营销频道一句话把最新视频改写成 LinkedIn 帖。<span style="color:var(--ink3)">配置界面见 §3</span></td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=180" target="_blank" rel="noopener" style="color:var(--blue)">03:00</a></td></tr>
-    <tr><td class="feat">Access bundle 配置</td><td>可下拉选/新建的权限包（bundle ≈ profile），含 Credentials/Repositories/Domains/Plugins/Instructions 五类——即"能用什么 + 怎么行为"。</td><td>—</td></tr>
-    <tr><td class="feat">GitHub 深度集成</td><td>官方仅内置默认插件；自定义技能/知识库需在 GitHub 建仓、在 bundle 的 Repositories 页连接，实现跨工具同步。</td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=627" target="_blank" rel="noopener" style="color:var(--blue)">10:27</a></td></tr>
+    <tr><td class="feat">调用高级功能</td><td>像在 Claude Code 里一样用技能/插件/连接器。例：调"标题构思"技能，读过往视频转录出新标题与钩子。</td><td><div class="shots"><a href="img/tp-title-ideation-ask.png" target="_blank"><img src="img/tp-title-ideation-ask.png" alt="调用标题构思技能"></a><a href="img/tp-title-ideation-result.png" target="_blank"><img src="img/tp-title-ideation-result.png" alt="标题构思结果"></a></div></td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=73" target="_blank" rel="noopener" style="color:var(--blue)">01:13</a></td></tr>
+    <tr><td class="feat">多人协作模式</td><td>打破单人用 AI 的信息孤岛：全员在同一频道共同交互、随时补想法，非技术员工"看别人用"即可上手。</td><td style="color:var(--ink3)">—（交互模式）</td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=120" target="_blank" rel="noopener" style="color:var(--blue)">02:00</a></td></tr>
+    <tr><td class="feat">频道专属定制 Agent</td><td>给频道绑定预设工作流的智能体（频道↔Access bundle）。例：营销频道一句话把最新视频改写成 LinkedIn 帖。<span style="color:var(--ink3)">后台配置见 §3</span></td><td><div class="shots"><a href="img/tp-marketing-agent-ask.png" target="_blank"><img src="img/tp-marketing-agent-ask.png" alt="营销Agent指令"></a><a href="img/tp-marketing-agent-result.png" target="_blank"><img src="img/tp-marketing-agent-result.png" alt="营销Agent结果"></a><a href="img/tp-agent-backend.png" target="_blank"><img src="img/tp-agent-backend.png" alt="定制Agent后台配置界面"></a></div></td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=180" target="_blank" rel="noopener" style="color:var(--blue)">03:00</a></td></tr>
+    <tr><td class="feat">Access bundle 配置</td><td>可下拉选/新建的权限包（bundle ≈ profile），含 Credentials/Repositories/Domains/Plugins/Instructions 五类——即"能用什么 + 怎么行为"。</td><td><div class="shots"><a href="img/tp-bundle-list.png" target="_blank"><img src="img/tp-bundle-list.png" alt="bundle列表"></a><a href="img/tp-bundle-instructions.png" target="_blank"><img src="img/tp-bundle-instructions.png" alt="bundle Instructions页"></a><a href="img/tp-bundle-plugins.png" target="_blank"><img src="img/tp-bundle-plugins.png" alt="bundle Plugins页"></a></div></td><td>—</td></tr>
+    <tr><td class="feat">GitHub 深度集成</td><td>官方仅内置默认插件；自定义技能/知识库需在 GitHub 建仓、在 bundle 的 Repositories 页连接，实现跨工具同步。</td><td><div class="shots"><a href="img/tp-bundle-repos.png" target="_blank"><img src="img/tp-bundle-repos.png" alt="bundle授权GitHub仓库"></a></div></td><td><a href="https://www.youtube.com/watch?v=F5DXjhBqV9I&t=627" target="_blank" rel="noopener" style="color:var(--blue)">10:27</a></td></tr>
   </tbody>
 </table>
 
